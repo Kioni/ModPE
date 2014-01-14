@@ -1,0 +1,52 @@
+ //Kioni's Mixture Craft®
+
+ModPE.setItem(385, "fireball", 0, "Fire Charge");
+
+function useItem(x, y, z, itemid, blockid)
+{
+if(itemId == 359 && blockId == 173 && getTile(x,y+1,z) == 51)
+{
+setTile(x, y, z, 0);
+setTile(x, y+1, z, 0);
+addItemInventory(385,1);
+}
+if(itemId==289&&blockId==12&&getTile(x,y+1,z)==9)//If your item is gunpowder, and the block your using it on is sand in water
+        {
+                preventDefault();
+                setTile(x,y,z,82);
+                addItemInventory(289,-1);
+        }
+if(itemId==318&&blockId==13)//If your item is a flint, and the block your using it on is gravel
+        {
+                setTile(x,y,z,0);
+                addItemInventory(318,-1);
+                addItemInventory(289,1);
+                clientMessage("Gunpowder Ready!!");
+        }
+        if(itemId==289&&blockId==245)//If your item is a pile of gunpowder, and the block your using it on is a StoneCutter
+        {
+                preventDefault();
+                addItemInventory(348,1);
+                addItemInventory(289,-1);
+                clientMessage("Glowstone Powder Ready!!");
+        }
+if(itemId==406&&blockId==20&&getTile(x,y-1,z)==51)//If your item is a Nether Quartz, and the block your using it on is glass over a fire
+        {
+                setTile(x,y,z,0);
+                addItemInventory(264,1);
+                addItemInventory(406,-1);
+                clientMessage("Glass Melt- created Diamond**");
+        }
+if(itemId==264&&blockId==42)//If your item is a Diamond, and the block your using it on is iron block
+        {
+                setTile(x,y,z,0);
+                addItemInventory(264,-1);
+                addItemInventory(266,8);
+                clientMessage("Transmutation Success!!");
+        }
+if(itemId==385&&blockId==173)
+        {
+                 addItemInventory(385,-1);
+                 setTile(x, y, z, 10);
+        }
+}
