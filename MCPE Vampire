@@ -667,8 +667,7 @@ return;
    if(Vampire==2)
 {
 preventDefault();
-Level.setTime(29388);
-Player.setHealth(20);
+clientMessage("AAAAARRRRGGGGGGHHGGHGGHHGRFHRGRHTHTHG!!!!!!!#@#@##@");
 }
 } else if (random == 3) {
 	 preventDefault();
@@ -980,8 +979,7 @@ return;
     if(Vampire==2)
 {
 preventDefault();
-Level.setTime(29388);
-Player.setHealth(20);
+clientMessage("a stillness comes from under the covers...  .... ...");
 }
 } else if (random == 5) {
 	 preventDefault();
@@ -1292,8 +1290,7 @@ return;
     if(Vampire==2)
 {
 preventDefault();
-Level.setTime(29388);
-Player.setHealth(20);
+clientMessage("you hear a whisper..  nichtoe.  ... .. .   .   .");
 }
 }
 }
@@ -2330,14 +2327,14 @@ if(itemId==318&&blockId==13)//If your item is a flint, and the block your using 
                 setTile(x,y,z,0);
                 addItemInventory(318,-1);
                 addItemInventory(289,1);
-                clientMessage("Gunpowder Ready!!");
+                clientMessage("GP+");
         }
         if(itemId==289&&blockId==245)//If your item is a pile of gunpowder, and the block your using it on is a StoneCutter
         {
                 preventDefault();
                 addItemInventory(348,1);
                 addItemInventory(289,-1);
-                clientMessage("Glowstone Powder Ready!!");
+                clientMessage("GS+");
         }
 if(itemId==406&&blockId==20&&getTile(x,y-1,z)==51)//If your item is a Nether Quartz, and the block your using it on is glass over a fire
         {
@@ -2808,7 +2805,7 @@ setPosition(getPlayerEnt(), Px, Py, Pz);
 Level.setTime(0);
 soul--;
 }
-   if(command[0] == "nichtoe" && soul < 5000)
+   if(command[0] == "nichtoe")
 {
           clientMessage(ChatColor.RED + "the blood crys....");
           Vampire = 1;
