@@ -2049,6 +2049,38 @@ if(itemId == 340 && blockId == 47 && shelf < 1100 && Vampire == 2)
 shelf++;
 addItemInventory(340,-1);
 clientMessage("IQ+:" + shelf);
+if(shelf==300)
+{
+clientMessage("Botany Mastered");
+}
+if(shelf==500)
+{
+clientMessage("Obtained Ability : Riding the Feather");
+}
+if(shelf==600)
+{
+clientMessage("Learned Observer Platforms");
+}
+if(shelf==700)
+{
+clientMessage("Learned Alchemy");
+}
+if(shelf==800)
+{
+clientMessage("Obtained Ability : Mind Reader");
+}
+if(shelf==900)
+{
+clientMessage(" you opened a rift into another dimension, tap a mob with a glass block to trap them there......");
+}
+if(shelf==1000)
+{
+clientMessage("Vampiric Maturity Reached!");
+}
+if(shelf==1099)
+{
+clientMessage("... you hear snorting from below you . ...  ..  ..");
+}
 }
 if(itemId == 295 && blockId == 2 && shelf > 50)
 {
