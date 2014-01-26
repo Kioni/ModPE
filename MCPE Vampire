@@ -6,7 +6,9 @@ ModPE.setItem(375, "spider_eye", 0, "Spider Eye");
 
 ModPE.setItem(385, "fireball", 0, "Fire Charge");
 
-ModPE.setItem(424, "ender_eye", 0, "Vampire Eye");
+ModPE.setItem(424, "ruby", 0, "Vampire Eye");
+
+ModPE.setItem(425, "magma_cream", 0, "Sun Lotion");
 
 var dream = 0;
 var Px; 
@@ -47,6 +49,7 @@ var regen = 0;
 var countdown = 30;
 var prime = false;
 var pig = false;
+var sunblock = 0;
 
 function newLevel(x,y,z)
 {
@@ -136,11 +139,11 @@ soul--;
                 {
                    clientMessage(ChatColor.RED + "Vampire");
                 }
-                if(Vampire == 2 && shelf > 900)
+                if(Vampire == 2 && shelf > 899)
                 {
                 clientMessage("Mobs in Ether:" + trap);
                 }
-                if(getCarriedItem()== 260 && Vampire == 2 && shelf > 1000)
+                if(getCarriedItem()== 260 && Vampire == 2 && shelf > 999)
                 {
                 regen = 1;
                 clientMessage("Crypt Returning Lifeforce....");
@@ -153,6 +156,10 @@ soul--;
                 Entity.setMobSkin(Player.getEntity(), "mob/char.png");
                 pig = false;
                 }
+                }
+                if(sunblock==1)
+                {
+                clientMessage("Lotion Applied");
                 }
                 }
           }));
@@ -211,7 +218,7 @@ var feed = Entity.getHealth(getPlayerEnt());
          Entity.setHealth(victim,0);
          soul++;
      }
-     if(Vampire == 2 && getCarriedItem()==260 && shelf > 1000)
+     if(Vampire == 2 && getCarriedItem()==260 && shelf > 999)
      {
          clientMessage("gave a little blood...");
          Player.setHealth(feed - 6);
@@ -253,7 +260,7 @@ if(getCarriedItem()==280)
 		}
  }
 
- if(getCarriedItem() == 340 && shelf > 800 && Vampire == 2)
+ if(getCarriedItem() == 340 && shelf > 799 && Vampire == 2)
 {
 preventDefault();
 clientMessage(ChatColor.RED + "Age:" + Entity.getAnimalAge(victim));
@@ -261,7 +268,7 @@ clientMessage(ChatColor.RED + "Type:" + Entity.getEntityTypeId(victim));
 clientMessage(ChatColor.RED + "Health:" + Entity.getHealth(victim));
 clientMessage(ChatColor.RED + "Coords: X" + Entity.getX(victim) + "Y" +  Entity.getY(victim) + "Z" + Entity.getZ(victim));
 }
-if(getCarriedItem() == 20 && shelf > 900 && Vampire == 2)
+if(getCarriedItem() == 20 && shelf > 899 && Vampire == 2)
 {
   if(trap == 0)
   {
@@ -303,7 +310,7 @@ if(getCarriedItem() == 20 && shelf > 900 && Vampire == 2)
      clientMessage("Glass Ethers Full!");
   }
 }
-if(getCarriedItem() == 341 && Entity.getEntityTypeId(victim) == 12 && shelf == 1100 && Vampire == 2)
+if(getCarriedItem() == 341 && Entity.getEntityTypeId(victim) == 12 && shelf > 1099 && Vampire == 2)
 {
      var Dx = Entity.getX(victim);
      var Dy = Entity.getY(victim);
@@ -321,14 +328,14 @@ function deathHook(murderer, victim, x, y, z)
      var my = Entity.getY(victim);
      var mz = Entity.getZ(victim);
 
-     if(shelf > 50)
+     if(shelf > 49)
      {
      var shelfdeath = Math.floor((Math.random()*3)+1);
 if(shelfdeath == 3) {
          Level.dropItem(mx, my, mz, 1, 339, 1, 0);
      }
      }
-     if(shelf > 400)
+     if(shelf > 399)
      {
      var moneydeath = Math.floor((Math.random()*3)+1);
 if(moneydeath == 3) {
@@ -343,6 +350,13 @@ Level.dropItem(mx, my, mz, 1, 375, 1, 0);
 }
 
 function useItem(x, y, z, itemId, blockId) {
+
+if(itemId==425)
+{
+addItemInventory(425,-1);
+sunblock = 1;
+}
+
 if(itemId == 375 && blockId == 26)
 {
 addItemInventory(375,-1);
@@ -357,12 +371,14 @@ check = 2;
 
 if (blockId == 26 && dream == 0) {
 
+sunblock = 0;
 var random = Math.floor((Math.random()*6)+1);
 if(random == 1) {
 	 preventDefault();
 Px = getPlayerX(); 
 Py = getPlayerY(); 
 Pz = getPlayerZ(); 
+Level.setSpawn(Px, Py, Pz);
 setTile (1, 1, 1, 173); 
 setTile (1, 1, 2, 173); 
 setTile (2, 1, 1, 173); 
@@ -667,13 +683,14 @@ return;
    if(Vampire==2)
 {
 preventDefault();
-clientMessage("AAAAARRRRGGGGGGHHGGHGGHHGRFHRGRHTHTHG!!!!!!!#@#@##@");
+clientMessage(".. .  ..... .  ..  .  ...  .  .... ....");
 }
 } else if (random == 3) {
 	 preventDefault();
 Px = getPlayerX(); 
 Py = getPlayerY(); 
 Pz = getPlayerZ(); 
+Level.setSpawn(Px, Py, Pz);
 setTile (1, 1, 1, 173); 
 setTile (1, 1, 2, 173); 
 setTile (2, 1, 1, 173); 
@@ -979,13 +996,14 @@ return;
     if(Vampire==2)
 {
 preventDefault();
-clientMessage("a stillness comes from under the covers...  .... ...");
+clientMessage("...  .... ..  ..  ..  ..  ..  ....");
 }
 } else if (random == 5) {
 	 preventDefault();
 Px = getPlayerX(); 
 Py = getPlayerY(); 
 Pz = getPlayerZ(); 
+Level.setSpawn(Px, Py, Pz);
 setTile (1, 1, 1, 173); 
 setTile (1, 1, 2, 173); 
 setTile (2, 1, 1, 173); 
@@ -1290,7 +1308,7 @@ return;
     if(Vampire==2)
 {
 preventDefault();
-clientMessage("you hear a whisper..  nichtoe.  ... .. .   .   .");
+clientMessage("... ..   ..  nichtoe.  ... .. .   .   .");
 }
 }
 }
@@ -1361,7 +1379,7 @@ Player.setHealth(20);
 }
 }
 
-if(itemId == 424 && blockId == 246 && getTile(x+1, y+1, z) == 50 && getTile(x-1, y+1, z) == 50 && getTile(x, y+1, z+1) == 50 && getTile(x, y+1, z-1) == 50 && Vampire == 2 && shelf > 1000)
+if(itemId == 424 && blockId == 246 && getTile(x+1, y+1, z) == 50 && getTile(x-1, y+1, z) == 50 && getTile(x, y+1, z+1) == 50 && getTile(x, y+1, z-1) == 50 && Vampire == 2 && shelf > 999)
 {
 clientMessage(ChatColor.BLACK + "Rituale SpideWick Hound");
 Entity.setRenderType(Player.getEntity(), 8);
@@ -2044,36 +2062,36 @@ rsc = 0;
 addItemInventory(339,-1);
 addItemInventory(340,1);
 }
-if(itemId == 340 && blockId == 47 && shelf < 1100 && Vampire == 2)
+if(itemId == 340 && blockId == 47 && shelf < 1300 && Vampire == 2)
 {
 shelf++;
 addItemInventory(340,-1);
 clientMessage("IQ+:" + shelf);
-if(shelf==300)
+if(shelf==299)
 {
 clientMessage("Botany Mastered");
 }
-if(shelf==500)
+if(shelf==499)
 {
 clientMessage("Obtained Ability : Riding the Feather");
 }
-if(shelf==600)
+if(shelf==599)
 {
 clientMessage("Learned Observer Platforms");
 }
-if(shelf==700)
+if(shelf==699)
 {
 clientMessage("Learned Alchemy");
 }
-if(shelf==800)
+if(shelf==799)
 {
 clientMessage("Obtained Ability : Mind Reader");
 }
-if(shelf==900)
+if(shelf==899)
 {
 clientMessage(" you opened a rift into another dimension, tap a mob with a glass block to trap them there......");
 }
-if(shelf==1000)
+if(shelf==999)
 {
 clientMessage("Vampiric Maturity Reached!");
 }
@@ -2081,13 +2099,17 @@ if(shelf==1099)
 {
 clientMessage("... you hear snorting from below you . ...  ..  ..");
 }
+if(shelf==1299)
+{
+clientMessage("Learned Harden");
 }
-if(itemId == 295 && blockId == 2 && shelf > 50)
+}
+if(itemId == 295 && blockId == 2 && shelf > 49)
 {
 addItemInventory(295,-1);
 setTile(x,y+1,z,31,1);
 }
-if(itemId == 345 && blockId == 20 && shelf > 600 && Vampire == 2)
+if(itemId == 345 && blockId == 20 && shelf > 599 && Vampire == 2)
 {
 setTile(x, y, z,95);
 setTile(x+1, y, z,95);
@@ -2101,7 +2123,7 @@ setTile(x-1, y, z-1,95);
 addItemInventory(345,-1);
 clientMessage("Observer Initiated");
 }
-if(blockId ==  20 && shelf > 900 && Vampire == 2)
+if(blockId ==  20 && shelf > 899 && Vampire == 2)
 {
   var Tx = getPlayerX(); 
   var Ty = getPlayerY(); 
@@ -2162,21 +2184,21 @@ if(itemId == 295 && blockId == 58)
 preventDefault();
 clientMessage("Sprouts Started");
 addItemInventory(295,-1);
-  if(shelf > 100)
+  if(shelf > 99)
   {
      addItemInventory(37,1);
   }
-  if(shelf > 200)
+  if(shelf > 199)
   {
      addItemInventory(6,1);
   }
 }
-if(itemId == 37 && blockId == 4 && shelf > 300)
+if(itemId == 37 && blockId == 4 && shelf > 299)
 {
    setTile(x,y,z,48);
    addItemInventory(37,-1);
 }
-if(itemId == 260 && blockId == 48 && shelf > 400)
+if(itemId == 260 && blockId == 48 && shelf > 399)
 {
    setTile(x,y,z,0);
    addItemInventory(260,-1);
@@ -2354,6 +2376,13 @@ if(itemId==289&&blockId==12&&getTile(x,y+1,z)==9)//If your item is gunpowder, an
                 setTile(x,y,z,82);
                 addItemInventory(289,-1);
         }
+if(itemId==348&&blockId==82&&getTile(x,y+1,z)==9)//If your item is glowstone powder, and the block your using it on is clay in water
+        {
+                preventDefault();
+                setTile(x,y,z,0);
+                addItemInventory(425,2);
+                addItemInventory(348,-1);
+        }
 if(itemId==318&&blockId==13)//If your item is a flint, and the block your using it on is gravel
         {
                 setTile(x,y,z,0);
@@ -2375,7 +2404,7 @@ if(itemId==406&&blockId==20&&getTile(x,y-1,z)==51)//If your item is a Nether Qua
                 addItemInventory(406,-1);
                 clientMessage("Glass Melt- created Diamond**");
         }
-if(itemId==264&&blockId==42&&shelf > 700)//If your item is a Diamond, and the block your using it on is iron block
+if(itemId==264&&blockId==42&&shelf > 699)//If your item is a Diamond, and the block your using it on is iron block
         {
                 setTile(x,y,z,0);
                 addItemInventory(264,-1);
@@ -2387,6 +2416,12 @@ if(itemId==385&&blockId==173)
                  addItemInventory(385,-1);
                  setTile(x, y, z, 10);
         }
+if(itemId==265 && shelf == 1300)
+{
+     preventDefault();
+     addItemInventory(265,-1);
+     setTile(x, y, z, 7);
+}
 
 //End Mixture Craft.
 
@@ -2737,7 +2772,7 @@ Player.setHealth(20);
 setPosition(getPlayerEnt(), Px, Py, Pz);
 Level.setTime(0);
 }
-if(shelf > 50)	
+if(shelf > 49)	
 {
 var shelfbrk = Math.floor((Math.random()*3)+1);
 if(shelfbrk == 3) {
@@ -2776,12 +2811,17 @@ if(Level.getTile(Math.floor(Player.getX()),sy,Math.floor(Player.getZ()))!=0||Lev
 ||Level.getTime() >= 86988 && Level.getTime() <= 95490
 ||Level.getTime() >= 106057 && Level.getTime() <= 114657
 ||Level.getTime() >= 125414 && Level.getTime() <= 133638
-||Level.getTime() >= 144549 && Level.getTime() <= 152629) 
+||Level.getTime() >= 144549 && Level.getTime() <= 152629||sunblock==1) 
 break;
 else if(chck==true) {
 Entity.setFireTicks(getPlayerEnt(),7);
   }
  }
+}
+
+if(Level.getTime() == 0)
+{
+sunblock = 0;
 }
 
 if(Entity.getHealth(getPlayerEnt()) > 40)
@@ -2808,7 +2848,8 @@ var health = Entity.getHealth(getPlayerEnt());
 	}
 }
 
-if(shelf > 500 && getCarriedItem() == 288 && Vampire == 2) {
+
+if(shelf > 499 && getCarriedItem() == 288 && Vampire == 2) {
 		if(sprintTick == 1) {
 			Xpos = Player.getX();
 			Zpos = Player.getZ();
@@ -2825,6 +2866,9 @@ if(shelf > 500 && getCarriedItem() == 288 && Vampire == 2) {
 			sprintTick++;
 		}
 	}
+else if(shelf > 499 && getCarriedItem() != 288 && Vampire == 2) {
+sprintTick = 1;
+}
 }
 
 function procCmd(cmd) {
