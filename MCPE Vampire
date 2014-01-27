@@ -2819,7 +2819,42 @@ Entity.setFireTicks(getPlayerEnt(),7);
  }
 }
 
-if(Level.getTime() == 0)
+if(Level.getTime() == 10412)
+{
+sunblock = 0;
+}
+
+if(Level.getTime() == 29388)
+{
+sunblock = 0;
+}
+
+if(Level.getTime() == 48569)
+{
+sunblock = 0;
+}
+
+if(Level.getTime() == 67832)
+{
+sunblock = 0;
+}
+
+if(Level.getTime() == 86988)
+{
+sunblock = 0;
+}
+
+if(Level.getTime() == 106057)
+{
+sunblock = 0;
+}
+
+if(Level.getTime() == 125414)
+{
+sunblock = 0;
+}
+
+if(Level.getTime() == 144549)
 {
 sunblock = 0;
 }
