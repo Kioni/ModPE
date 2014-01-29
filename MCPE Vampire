@@ -1,4 +1,4 @@
-//Vampire Mod v3.0 ~ Kioni.
+//Vampire Mod v3.2 ~ Kioni.
 
 ModPE.setItem(388, "emerald", 0, "Emerald");
 
@@ -1321,24 +1321,25 @@ if(itemId == 260 && dream == 1)
 {
 dream = 0;
 setPosition(getPlayerEnt(), Px, Py, Pz);
+Player.setHealth(20);
 Level.setTime(0);
 if(Vampire==2)
 {
 Level.setTime(29388);
-Player.setHealth(20);
 }
 }
+
 if(itemId == 49 && blockId == 245 && dream == 1)
 {
 preventDefault();
 dream = 0;
 addItemInventory(49,-1);
 setPosition(getPlayerEnt(), Px, Py, Pz);
+Player.setHealth(20);
 Level.setTime(0);
 if(Vampire==2)
 {
 Level.setTime(29388);
-Player.setHealth(20);
 }
 }
 if(blockId == 54 && dream == 1)
@@ -1354,11 +1355,11 @@ if(itemId == 287 && dream == 1)
 dream = 0;
 Player.setHealth(20);
 setPosition(getPlayerEnt(), Px, Py, Pz);
+Player.setHealth(20);
 Level.setTime(0);
 if(Vampire==2)
 {
 Level.setTime(29388);
-Player.setHealth(20);
 }
 }
 if (blockId == 26 && dream == 1)
@@ -1371,11 +1372,11 @@ if(blockId == 1 && dream == 1)
 dream = 0;
 Player.setHealth(20);
 setPosition(getPlayerEnt(), Px, Py, Pz);
+Player.setHealth(20);
 Level.setTime(0);
 if(Vampire==2)
 {
 Level.setTime(29388);
-Player.setHealth(20);
 }
 }
 
@@ -2804,7 +2805,7 @@ if(sy==128) {
 chck=true;
 }
 if(Level.getTile(Math.floor(Player.getX()),sy,Math.floor(Player.getZ()))!=0||Level.getTile(Math.floor(Player.getX()),Math.floor
-(Player.getY())-1,Math.floor(Player.getZ()))==8 ||Level.getTile(Math.floor(Player.getX()),Math.floor(Player.getY())-1,Math.floor(Player.getZ() ))==9||Level.getTile(Math.floor(Player.getX()),Math.floor(Player.getY())-2,Math.floor (Player.getZ()))==8||Level.getTile(Math.floor (Player.getX()),Math.floor(Player.getY())-2,Math.floor(Player.getZ()))==9||Level.getTile(Math.floor(Player.getX()),Math.floor(Player.getY())-2 ,Math.floor(Player.getZ()))==79||pig==true||Level.getTime() >= 10412 && Level.getTime() <= 18843
+(Player.getY())-1,Math.floor(Player.getZ()))==8 ||Level.getTile(Math.floor(Player.getX()),Math.floor(Player.getY())-1,Math.floor(Player.getZ() ))==9||Level.getTile(Math.floor(Player.getX()),Math.floor(Player.getY())-2,Math.floor (Player.getZ()))==8||Level.getTile(Math.floor (Player.getX()),Math.floor(Player.getY())-2,Math.floor(Player.getZ()))==9||pig==true||Level.getTime() >= 10412 && Level.getTime() <= 18843
 ||Level.getTime() >= 29388 && Level.getTime() <= 37615
 ||Level.getTime() >= 48569 && Level.getTime() <= 56738
 ||Level.getTime() >= 67832 && Level.getTime() <= 76109
@@ -2855,6 +2856,12 @@ sunblock = 0;
 }
 
 if(Level.getTime() == 144549)
+{
+sunblock = 0;
+}
+
+if(Level.getTile(Math.floor(Player.getX()),Math.floor
+(Player.getY())-1,Math.floor(Player.getZ()))==8 ||Level.getTile(Math.floor(Player.getX()),Math.floor(Player.getY())-1,Math.floor(Player.getZ() ))==9||Level.getTile(Math.floor(Player.getX()),Math.floor(Player.getY())-2,Math.floor (Player.getZ()))==8||Level.getTile(Math.floor (Player.getX()),Math.floor(Player.getY())-2,Math.floor(Player.getZ()))==9)
 {
 sunblock = 0;
 }
