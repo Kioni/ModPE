@@ -1,4 +1,4 @@
-//Vampire Mod v3.2 ~ Kioni.
+//Vampire Mod v4.0 ~ Kioni.
 
 ModPE.setItem(388, "emerald", 0, "Emerald");
 
@@ -9,6 +9,10 @@ ModPE.setItem(385, "fireball", 0, "Fire Charge");
 ModPE.setItem(424, "ruby", 0, "Vampire Eye");
 
 ModPE.setItem(425, "magma_cream", 0, "Sun Lotion");
+
+ModPE.setItem(471, "potion_bottle_drinkable", 0, "Empty");
+
+ModPE.setItem(472, "experience_bottle", 0, "Blood");
 
 var dream = 0;
 var Px; 
@@ -50,6 +54,8 @@ var countdown = 30;
 var prime = false;
 var pig = false;
 var sunblock = 0;
+var hung = 0;
+var countdownh = 600;
 
 function newLevel(x,y,z)
 {
@@ -181,6 +187,13 @@ android.graphics.drawable.ColorDrawable(android.graphics.Color.RED));
 
 function attackHook(attacker,victim,x,y,z)
 {
+
+if(getCarriedItem()==471)
+{
+addItemInventory(471,-1);
+Entity.setHealth(victim, 1);
+addItemInventory(472,1);
+}
 
 if(getCarriedItem()==388)
 {
@@ -2068,35 +2081,35 @@ if(itemId == 340 && blockId == 47 && shelf < 1300 && Vampire == 2)
 shelf++;
 addItemInventory(340,-1);
 clientMessage("IQ+:" + shelf);
-if(shelf==299)
+if(shelf==300)
 {
 clientMessage("Botany Mastered");
 }
-if(shelf==499)
+if(shelf==500)
 {
 clientMessage("Obtained Ability : Riding the Feather");
 }
-if(shelf==599)
+if(shelf==600)
 {
 clientMessage("Learned Observer Platforms");
 }
-if(shelf==699)
+if(shelf==700)
 {
 clientMessage("Learned Alchemy");
 }
-if(shelf==799)
+if(shelf==800)
 {
 clientMessage("Obtained Ability : Mind Reader");
 }
-if(shelf==899)
+if(shelf==900)
 {
 clientMessage(" you opened a rift into another dimension, tap a mob with a glass block to trap them there......");
 }
-if(shelf==999)
+if(shelf==1000)
 {
 clientMessage("Vampiric Maturity Reached!");
 }
-if(shelf==1099)
+if(shelf==1100)
 {
 clientMessage("... you hear snorting from below you . ...  ..  ..");
 }
@@ -2405,6 +2418,12 @@ if(itemId==406&&blockId==20&&getTile(x,y-1,z)==51)//If your item is a Nether Qua
                 addItemInventory(406,-1);
                 clientMessage("Glass Melt- created Diamond**");
         }
+if(itemId==288&&blockId==20&&getTile(x,y-1,z)==51)//If your item is a Feather, and the block your using it on is glass over a fire
+        {
+                setTile(x,y,z,0);
+                addItemInventory(471,6);
+                clientMessage("Swirled Up Some Vials");
+        }
 if(itemId==264&&blockId==42&&shelf > 699)//If your item is a Diamond, and the block your using it on is iron block
         {
                 setTile(x,y,z,0);
@@ -2425,6 +2444,17 @@ if(itemId==265 && shelf == 1300)
 }
 
 //End Mixture Craft.
+
+if(itemId==472)
+{
+var feedbot = Entity.getHealth(getPlayerEnt());
+
+     if(Vampire == 2 && feedbot < 40)
+     {
+         Player.setHealth(feedbot + 10);
+         addItemInventory(472, -1);
+     }
+}
 
 	if(itemId==280)
  {
@@ -2890,6 +2920,29 @@ var health = Entity.getHealth(getPlayerEnt());
 	}
 }
 
+if(Vampire == 2)
+{
+
+var pain = Entity.getHealth(getPlayerEnt());
+	
+	if(pain == 40) {
+		hung = 0;
+	}
+   else if(pain < 40) {
+		hung = 1;
+	}
+	if(hung == 1) {
+		countdownh--;
+	} else if(hung == 0 && shelf > 999) {
+		countdownh = 600;
+	} else if(hung == 0 && shelf < 1000) {
+		 Player.setHealth(pain - 1);
+	}
+	if(countdownh == 0) {
+		Player.setHealth(pain - 1);
+		countdownh = 600;
+	}
+}
 
 if(shelf > 499 && getCarriedItem() == 288 && Vampire == 2) {
 		if(sprintTick == 1) {
