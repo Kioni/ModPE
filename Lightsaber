@@ -1,0 +1,29 @@
+//Light Saber v1.0 by Kioni
+
+ ModPE.setItem(490, "blaze_rod", 0, "Light Saber");
+
+Item.addCraftRecipe(490,1,0,[265,1,0,331,1,0,89,2,0]);
+
+function useItem(x, y, z, itemid, blockid)
+{
+
+if(itemid== 490)
+{
+Level.dropItem(x, y, z, 1, 348, 1, 0);
+if(blockid== 1||blockid== 2||blockid== 3)
+{
+Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), "random.break", 1000, 15);
+Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), "random.fuse", 1000, 15);
+setTile(x, y, z, 89);
+}
+}
+}
+
+function attackHook(attacker,victim)
+{
+if(Player.getCarriedItem()== 490)
+{
+Level.playSound(getPlayerX(), getPlayerY(), getPlayerZ(), "random.fuse", 1000, 15);
+Entity.setFireTicks(victim, 9);
+}
+}
