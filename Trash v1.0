@@ -1,0 +1,21 @@
+//Trash v1.0 ~ Kioni
+
+ Block.defineBlock(99, "Trash",[["piston_top_normal", 0], ["piston_inner", 0],["piston_top_sticky", 0], ["piston_top_sticky", 0],["piston_top_sticky", 0],["piston_top_sticky", 0]]);
+
+Block.setDestroyTime(99, 1);
+
+Item.addCraftRecipe(99, 1, 0, [5, 6, 0, 331, 1, 0, 1, 2, 0]);
+
+function useItem(x, y, z, itemid, blockid)
+{
+if(blockid==99 && itemid!=0)
+{
+Player.clearInventorySlot(Player.getSelectedSlotId());
+}
+if(itemid== 0 && blockid== 99)
+{
+Level.destroyBlock(x, y, z, 99);
+}
+}
+
+//Kioni 2014 ®
