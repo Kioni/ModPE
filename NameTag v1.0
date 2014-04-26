@@ -1,0 +1,155 @@
+//NameTag v1.0
+
+ModPE.setItem (500, "name_tag", 0, "Name Tag");
+
+
+Item.addCraftRecipe (500, 1, 0, [334, 1, 0, 339, 1, 0]);
+
+function nametaggui(victim)
+{
+var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
+try{
+
+var dialog = new android.app.Dialog(ctx);
+var scroll = new android.app.Dialog(ctx);
+var tagLayout = new android.widget.LinearLayout(ctx);
+var nametagname= new android.widget.EditText(ctx);
+var applybtn = new android.widget.Button(ctx);
+var exit2 = new android.widget.Button(ctx);
+
+applybtn.setText("Apply");
+exit2.setText("Exit");
+
+dialog.setTitle("Name Tag");
+
+tagLayout.setOrientation(android.widget.LinearLayout.VERTICAL);
+tagLayout.addView(nametagname);
+tagLayout.addView(applybtn);
+tagLayout.addView(exit2);
+
+
+dialog.setContentView(tagLayout);
+
+applybtn.setOnClickListener(new android.view.View.OnClickListener({
+onClick: function(view) {
+dialog.dismiss();
+Entity.setNameTag (victim, nametagname.getText());
+
+}
+}));
+exit2.setOnClickListener(new android.view.View.OnClickListener( {
+
+onClick: function(view) {
+
+dialog.dismiss();
+
+}
+}));
+dialog.show();
+
+}
+catch(e){
+for(var i = 30; i > 1; i--)
+{
+print(""+error);
+}
+}
+}
+}));
+}
+
+function configMenu ()
+{
+var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
+try{
+
+var dialog = new android.app.Dialog(ctx);
+var scroll = new android.app.Dialog(ctx);
+var tagLayout = new android.widget.LinearLayout(ctx);
+var applybtn = new android.widget.Button(ctx);
+var exit2 = new android.widget.Button(ctx);
+
+applybtn.setText("OK");
+exit2.setText("Exit");
+
+dialog.setTitle("MCPE++");
+
+tagLayout.setOrientation(android.widget.LinearLayout.VERTICAL);
+tagLayout.addView(applybtn);
+tagLayout.addView(exit2);
+
+
+dialog.setContentView(tagLayout);
+
+applybtn.setOnClickListener(new android.view.View.OnClickListener({
+onClick: function(view) {
+dialog.dismiss();
+
+}
+}));
+exit2.setOnClickListener(new android.view.View.OnClickListener( {
+
+onClick: function(view) {
+
+dialog.dismiss();
+
+}
+}));
+dialog.show();
+
+}
+catch(e){
+for(var i = 30; i > 1; i--)
+{
+print(""+error);
+}
+}
+}
+}));
+}
+
+function destroyBlock (x, y, z, side)
+{
+	var axeIds = [258, 271, 275, 279, 286];
+	var woodId = 17;
+	var tile = getTile(x, y, z);
+	var item = getCarriedItem();
+	 if(item == axeIds[0] || item == axeIds[1] || item == axeIds[2] || item == axeIds[3] || item == axeIds[4])
+	if(tile == woodId) { //check if original block touched was wood
+		Level.destroyBlock(x, y, z, true); //destroys and drops original wood block
+		for(var i = y+1;i < 128;i++) { //loop to look for wood blocks above original block (y+1 as original block has been destroyed at this point)
+			if(getTile(x, i, z) == woodId) { //if the block is a wood block
+				Level.destroyBlock(x, i, z, true); //destroys and drops wood block
+			} else {
+				break;
+			}
+		}
+	}
+}
+
+
+
+
+
+function attackHook(attacker, victim)
+{
+if(getCarriedItem()== 500)
+{
+preventDefault();
+nametaggui(victim);
+}
+}
+
+
+function procCmd(command)
+{
+var cmd = command.split(" ");
+
+if (cmd[0] == "give")
+{
+addItemInventory (cmd[1], cmd[2]);
+clientMessage ("Given " + cmd[2] + " items of ID " + cmd[1]);
+}
+}
