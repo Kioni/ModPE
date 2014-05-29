@@ -732,15 +732,6 @@ function destroyBlock (x, y, z, side)
 function deathHook(attacker,victim)
 {
 Level.dropItem(Entity.getX(victim), Entity.getY(victim), Entity.getZ(victim), 1, 388, 1, 0);
-cash = cash +1;
-}
-
-function modTick()
-{
-if(cash > 999)
-{
-cash = 999;
-}
 }
 
 function leaveGame()
