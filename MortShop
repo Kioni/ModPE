@@ -29,15 +29,15 @@ cash = ModPE.readData("cash");
 
 function useItem(x, y, z, itemId, blockId)
 {
-if(blockId==252 && so == 1 && Player.getCarriedItem()!=388)
+if(blockId==252 && so == 1 && Player.getCarriedItem()!=388 && Player.getCarriedItem()!=280)
 {
     mortMenu();
     so = 2;
 }
-if(blockId==252 && Player.getCarriedItem()==388 && Player.getCarriedItemCount() < 64)
+if(blockId==252 && Player.getCarriedItem()==388 && Player.getCarriedItemCount() < 64 && cash < 999)
 {
 addItemInventory(388,-1);
-cash++;
+cash = cash +1;
 }
 if(blockId==99 && itemId!=0)
 {
@@ -94,6 +94,15 @@ if(itemId==280&&blockId==61)//If your item is a Magic Wand, and the block your u
                 setTile(x,y,z,0);
 
                 addItemInventory(61,1);
+
+        }
+        if(itemId==280&&blockId==252)//If your item is a Magic Wand, and the block your using it on is a Shop
+
+        {
+
+                setTile(x,y,z,0);
+
+                addItemInventory(252,1);
 
         }
 
@@ -723,7 +732,15 @@ function destroyBlock (x, y, z, side)
 function deathHook(attacker,victim)
 {
 Level.dropItem(Entity.getX(victim), Entity.getY(victim), Entity.getZ(victim), 1, 388, 1, 0);
-cash = cash + 2;
+cash = cash +1;
+}
+
+function modTick()
+{
+if(cash > 999)
+{
+cash = 999;
+}
 }
 
 function leaveGame()
