@@ -24,6 +24,8 @@ Item.addCraftRecipe(99, 1, 0, [5, 6, 0, 331, 1, 0, 1, 2, 0]);
 
 Item.addCraftRecipe(252, 1, 0, [1, 4, 0, 340, 4, 0, 388, 1, 0]);
 
+Item.addFurnaceRecipe(263,264);
+
 function newLevel()
 {
 cash = ModPE.readData("cash");
@@ -448,6 +450,18 @@ function mortMenu(){
             menuScroll.addView(menuLayout);
             menuLayout1.addView(menuScroll);
 
+            var button1a = new android.widget.Button(ctx);
+            button1a.setText("*JUKEBOX*");
+            button1a.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+                    if(mp!=null)
+mp.reset();zs=dq=0;lj=new Array();
+                    musicMenu();
+                 clientMessage(ChatColor.BLUE + "***JukeBox***");
+                }
+            }));
+            menuLayout.addView(button1a);
+
             var button1 = new android.widget.Button(ctx);
             button1.setText("Diamond Sword - 20$");
             button1.setOnClickListener(new android.view.View.OnClickListener({
@@ -739,6 +753,29 @@ Level.dropItem(Entity.getX(victim), Entity.getY(victim), Entity.getZ(victim), 1,
 function leaveGame()
 {
 ModPE.saveData("cash", cash);
+if(mp!=null)
+mp.reset();zs=dq=0;lj=new Array();
 }
+/*GUI Part <Coppyright (C) 2014 TBPM Background Music System ported to TV>*/
 
+function musicMenu()
+{var ctx=com.mojang.minecraftpe.MainActivity.currentMainActivity.get();ctx.runOnUiThread(new java.lang.Runnable({run:function(){try{var sv=new android.widget.ScrollView(ctx);var layout=new android.widget.LinearLayout(ctx);layout.setOrientation(1);for(var js=0;ModPE.readData("beijingyinyue"+js)!=""&&ModPE.readData("beijingyinyue"+js)!=null;js++)
+{lj[js]=ModPE.readData("beijingyinyue"+js);zs++;}
+var t=new android.widget.TextView(ctx);t.setText("Now you have"+zs+"amount of music，it will save by auto next time no need to fill in again");var e1=new android.widget.EditText(ctx);e1.setHint("Please fill in path，like:/sdcard/1.mp3");var b1=new android.widget.Button(ctx);b1.setText("Add");b1.setOnClickListener(new android.view.View.OnClickListener({onClick:function(v){if(e1.getText().toString()!="")
+{try
+{mp.setDataSource(e1.getText().toString());mp.prepare();lj[zs]=e1.getText().toString();ModPE.saveData("beijingyinyue"+zs,lj[zs]);e1.setText("");zs++;t.setText("Now you have"+zs+"amount of JB music，it will save by auto next time no need to fill in again");}catch(e)
+{print("Err:"+e);}
+finally{mp.reset();}}
+else print("You haven't fill in path！");}}));var b2=new android.widget.Button(ctx);b2.setText("Reset");b2.setOnClickListener(new android.view.View.OnClickListener({onClick:function(v){for(var js=0;ModPE.readData("beijingyinyue"+js)!=""&&ModPE.readData("beijingyinyue"+js)!=null;js++)
+{ModPE.removeData("beijingyinyue"+js);}
+lj=new Array();dq=zs=0;t.setText("Now you have"+zs+"amount of music，it will save by auto next time no need to fill in again");}}));var svp=new android.view.ViewGroup.LayoutParams(-2,-2);layout.addView(t,svp);layout.addView(e1,svp);layout.addView(b1,svp);layout.addView(b2,svp);sv.addView(layout);var dialog=new android.app.AlertDialog.Builder(ctx).setView(sv).setTitle("*JUKEBOX*").setNegativeButton("Play",new android.content.DialogInterface.OnClickListener()
+{onClick:function(dialog,which)
+{if(zs>0)
+{mp.setDataSource(lj[dq]);mp.prepare();mp.start();var temp=dq+1;print("TV :Start playing"+temp+"song,Path:"+lj[dq]);mp.setOnCompletionListener(new android.media.MediaPlayer.OnCompletionListener()
+{onCompletion:function(mper)
+{print("Song Over");if(dq<zs-1)
+dq++;else
+dq=0;mp.reset();mp.setDataSource(lj[dq]);mp.prepare();mp.start();print("TV :start playing"+(dq+1)+"song,path"+lj[dq]);}});}
+else{print("You haven't add any song！");print("If u want to add more song exit and add");}}}).setPositiveButton("Cancel",null).create();dialog.setCanceledOnTouchOutside(false);dialog.show();}catch(err){print("Err code: "+err);}}}));}
+var mp=new android.media.MediaPlayer();var zs=0;var lj=new Array();var dq=0;
 //Kioni 2014 ®
