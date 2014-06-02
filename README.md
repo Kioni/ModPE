@@ -1,4 +1,5 @@
-ModPE
+Discovery BTW
 =====
 
-MCPE js
+Supernatural and Better Than Wolves Styled Modding Templates
+
