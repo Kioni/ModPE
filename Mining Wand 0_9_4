@@ -1,0 +1,644 @@
+ //Mining Wand v3.5 ~ Kioni
+
+//MixtureCraft v2.0
+
+var mine = 0;
+
+
+function useItem(x, y, z, itemId, blockId)
+
+{
+
+
+if(itemId==280&&blockId==173)//If your item is a Magic Wand, and the block your using it on is Coal Block
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(173,1);
+
+
+        }
+
+
+if(itemId==280&&blockId==170)//If your item is a Magic Wand, and the block your using it on is Hay Bail
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(170,1);
+
+
+        }
+
+
+if(itemId==280&&blockId==58)//If your item is a Magic Wand, and the block your using it on is Crafting Table
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(58,1);
+
+
+        }
+
+
+if(itemId==280&&blockId==245)//If your item is a Magic Wand, and the block your using it on is Stonecutter
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(245,1);
+
+
+        }
+
+
+if(itemId==280&&blockId==61)//If your item is a Magic Wand, and the block your using it on is a Furnace
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(61,1);
+
+
+        }
+
+        if(itemId==280&&blockId==252)//If your item is a Magic Wand, and the block your using it on is a Shop
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(252,1);
+
+
+        }
+
+
+if(itemId==280&&blockId==47)//If your item is a Magic Wand, and the block your using it on is a Bookshelf
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                clientMessage("**Blessings**");
+
+
+                addItemInventory(347,1);
+
+
+                addItemInventory(339,5);
+
+
+                addItemInventory(340,2);
+
+
+                addItemInventory(40,5);
+
+
+                addItemInventory(39,5);
+
+
+        }
+
+
+if(itemId==280&&blockId==89)
+
+
+{ 
+
+
+     if(mine==0)
+
+
+     { 
+
+
+         mine = 1;
+
+
+         clientMessage("Mining Wand Active");
+
+
+     }
+
+
+     else if(mine==1)
+
+
+     {
+
+
+          mine = 0;
+
+
+          clientMessage("Mining Wand Off");
+
+
+     }
+
+
+}
+
+
+    if(mine==1)
+
+
+    {
+
+
+        if(itemId==280&&blockId==59)
+
+
+             {
+
+
+                  setTile(x,y,z,0);
+
+
+                  setTile(x,y-1,z,60);
+
+
+                  addItemInventory(296,3);
+
+
+                  addItemInventory(295,2);
+
+
+                  addItemInventory(458,2);
+
+
+             }
+
+
+        if(itemId==280&&blockId==2)//If your item is a Magic Wand, and the block your using it on is grass
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+        }
+
+
+        else if(itemId==280&&blockId==3)//If the block we are using is dirt
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+        }
+
+
+        else if(itemId==280&&blockId==1)//If the block we are using is stone
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+        }
+
+
+        else if(itemId==280&&blockId==13)//If the block we are using is gravel
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(318,1);
+
+
+        }
+
+
+        else if(itemId==280&&blockId==16)//If the block we are using is coal ore
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(263,3);
+
+
+        }
+
+
+        else if(itemId==280&&blockId==15)//If the block we are using is iron ore
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(15,1);
+
+
+        }
+
+
+        else if(itemId==280&&blockId==21)//If the block we are using is lapis ore
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(21,1);
+
+
+        }
+
+
+        else if(itemId==280&&blockId==14)//If the block we are using is gold ore
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(14,1);
+
+
+        }
+
+
+        else if(itemId==280&&blockId==56)//If the block we are using is diamond ore
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(56,1);
+
+
+        }
+
+
+        else if(itemId==280&&blockId==73)//If the block we are using is redstone ore
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(331,3);
+
+
+                addItemInventory(246,1);
+
+
+        }
+
+
+        else if(itemId==280&&blockId==74)//If the block we are using is redstone ore
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(331,3);
+
+
+                addItemInventory(246,3);
+
+
+        }
+
+
+        if(itemId==280&&blockId==78)//If your item is a Magic Wand, and the block your using it on is snow
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(332,1);
+
+
+        }
+
+
+        if(itemId==280&&blockId==80)//If your item is a Magic Wand, and the block your using it on is Snow Block
+
+
+        {
+
+
+                setTile(x,y,z,79);
+
+
+        }
+
+
+        if(itemId==280&&blockId==12)//If your item is a Magic Wand, and the block your using it on is sand
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(20,1);
+
+
+        }
+
+
+        if(itemId==280&&blockId==20)//If your item is a Magic Wand, and the block your using it on is glass
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(406,2);
+
+
+        }
+
+
+        if(itemId==280&&blockId==7)//If your item is a Magic Wand, and the block your using it on is bedrock
+
+
+        {
+
+
+                addItemInventory(87,1);
+
+
+        }
+
+
+        if(itemId==280&&blockId==17)//If your item is a wand
+
+
+   {
+
+
+      setTile(x,y,z,0);
+
+
+      addItemInventory(17,1);
+
+
+      for(var a = 1; a < 10; a++)
+
+
+      {
+
+
+        if(getTile(x,y+a,z) == 17)
+
+
+        {
+
+
+          setTile(x,y+a,z,0);
+
+
+          addItemInventory(17,1);
+
+
+        }
+
+
+        else {break;}
+
+
+      }
+
+
+      preventDefault();
+
+
+    }
+
+}
+
+ //Kioni's Mixture Craft®
+
+
+
+
+if(itemId==289&&blockId==12&&getTile(x,y+1,z)==9)//If your item is gunpowder, and the block your using it on is sand in water
+
+
+        {
+
+
+                preventDefault();
+
+
+                setTile(x,y,z,82);
+
+
+                addItemInventory(289,-1);
+
+
+        }
+
+
+if(itemId==318&&blockId==13)//If your item is a flint, and the block your using it on is gravel
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(318,-1);
+
+
+                addItemInventory(289,1);
+
+
+                clientMessage("GP+");
+
+
+        }
+
+
+        if(itemId==289&&blockId==245)//If your item is a pile of gunpowder, and the block your using it on is a StoneCutter
+
+
+        {
+
+
+                preventDefault();
+
+
+                addItemInventory(348,1);
+
+
+                addItemInventory(289,-1);
+
+
+                clientMessage("GS+");
+
+
+        }
+
+
+if(itemId==406&&blockId==20&&getTile(x,y-1,z)==51)//If your item is a Nether Quartz, and the block your using it on is glass over a fire
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(264,1);
+
+
+                addItemInventory(406,-1);
+
+
+                clientMessage("Glass Melt- created Diamond**");
+
+
+        }
+
+
+if(itemId==264&&blockId==42)//If your item is a Diamond, and the block your using it on is iron block
+
+
+        {
+
+
+                setTile(x,y,z,0);
+
+
+                addItemInventory(264,-1);
+
+
+                addItemInventory(266,8);
+
+
+                clientMessage("Transmutation Success!!");
+
+
+        }
+
+
+
+
+//End Mixture Craft.
+
+}
+
+function destroyBlock (x, y, z, side)
+
+
+{
+
+
+	var axeIds = [258, 271, 275, 279, 286];
+
+
+	var woodId = 17;
+
+
+	var tile = getTile(x, y, z);
+
+
+	var item = getCarriedItem();
+
+
+	 if(item == axeIds[0] || item == axeIds[1] || item == axeIds[2] || item == axeIds[3] || item == axeIds[4])
+
+
+	if(tile == woodId) { //check if original block touched was wood
+
+
+		Level.destroyBlock(x, y, z, true); //destroys and drops original wood block
+
+
+		for(var i = y+1;i < 128;i++) { //loop to look for wood blocks above original block (y+1 as original block has been destroyed at this point)
+
+
+			if(getTile(x, i, z) == woodId) { //if the block is a wood block
+
+
+				Level.destroyBlock(x, i, z, true); //destroys and drops wood block
+
+
+			} else {
+
+
+				break;
+
+
+			}
+
+
+		}
+
+
+	}
+
+
+}
+
+//Kioni 2014 ®
