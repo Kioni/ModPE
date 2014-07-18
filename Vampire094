@@ -160,7 +160,7 @@ if(Player.getCarriedItemCount()>63)
 clientMessage("NO FULL STACKS");
 }
 
-if(focus == 1)
+if(itemId != 347 && focus == 1)
 {
 ModPE.setGameSpeed(20);
 focus = 0;
