@@ -67,6 +67,21 @@ android.graphics.drawable.ColorDrawable(android.graphics.Color.BLACK));
 
 function attackHook(attacker,victim,x,y,z)
 {
+     if(Entity.getEntityTypeId(victim)!=34 && Entity.getEntityTypeId(victim)!=64 && Entity.getEntityTypeId(victim)!=65 && Entity.getEntityTypeId(victim)!=66 && Entity.getEntityTypeId(victim)!=80 && Entity.getEntityTypeId(victim)!=81 && Entity.getEntityTypeId(victim)!=82 && Entity.getEntityTypeId(victim)!=83 && Entity.getEntityTypeId(victim)!=84)
+{
+
+var xx = Entity.getX(victim);
+var yy = Entity.getY(victim);
+var zz = Entity.getZ(victim);
+
+setTile(xx, yy, zz, 246);
+{
+
+Level.destroyBlock(xx, yy, zz, false)
+}
+
+}
+
      if(Vampire == 2 && Entity.getEntityTypeId(victim)!=34 && Entity.getEntityTypeId(victim)!=64 && Entity.getEntityTypeId(victim)!=65 && Entity.getEntityTypeId(victim)!=66 && Entity.getEntityTypeId(victim)!=80 && Entity.getEntityTypeId(victim)!=81 && Entity.getEntityTypeId(victim)!=82 && Entity.getEntityTypeId(victim)!=83 && Entity.getEntityTypeId(victim)!=84 && feedtic == 2 && Entity.getHealth(victim) > 1)
      {
 preventDefault();
