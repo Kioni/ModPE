@@ -4,7 +4,11 @@
 
 var mine = 0;
 
+function newLevel(x,y,z,ent)
+{
 
+clientMessage(ChatColor.BLUE + "Kioni's Mining Wand");
+}
 function useItem(x, y, z, itemId, blockId)
 
 {
@@ -642,3 +646,4 @@ function destroyBlock (x, y, z, side)
 }
 
 //Kioni 2014 ®
+
