@@ -1,10 +1,10 @@
 //Vampire Mod ~ Kioni.
 
-/*ModPE.setItem(472, "ruby", 0, "Blood"); 
+ModPE.setItem(472, "ruby", 0, "Blood"); 
 
-Item.addCraftRecipe(472,1,0,[471,1,0,363,1,0]);// Blood
+Item.addCraftRecipe(472,1,0,[20,1,0,363,1,0]);// Blood
 
-Item.addFurnaceRecipe(263, 264, 0);*/
+Item.addFurnaceRecipe(263, 264, 0);
 
 var sprintTick = 1;
 var Vampire = 1;
@@ -20,7 +20,7 @@ var feedtic = 1;
 
 function newLevel(x,y,z,ent)
 {
-
+Vampire = ModPE.readData("Vampire");
 clientMessage(ChatColor.RED + "MCPE Vampire Mod");
 
 
@@ -117,6 +117,13 @@ if(moneydeath == 3) {
 }
 
 function useItem(x, y, z, itemId, blockId) {
+
+if(blockId==26 && Vampire==2)
+{
+preventDefault();
+Level.setTime(29388);
+clientMessage("You Have Slept");
+}
 
 if(itemId==472 && Player.getCarriedItemCount()<64)
 {
@@ -281,7 +288,7 @@ sprintTick = 1;
 
 function leaveGame()
 {
-
+ModPE.saveData("Vampire", Vampire);
   var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
   activity.runOnUiThread(new java.lang.Runnable({ run: function() {
         if(buttonWindow != null) { 
