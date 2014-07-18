@@ -1,0 +1,297 @@
+//Vampire Mod ~ Kioni.
+
+/*ModPE.setItem(472, "ruby", 0, "Blood"); 
+
+Item.addCraftRecipe(472,1,0,[471,1,0,363,1,0]);// Blood
+
+Item.addFurnaceRecipe(263, 264, 0);*/
+
+var sprintTick = 1;
+var Vampire = 1;
+
+var hung = 0;
+var countdownh = 600;
+
+var sunclock = 120;
+
+var focus = 0;
+
+var feedtic = 1;
+
+function newLevel(x,y,z,ent)
+{
+
+clientMessage(ChatColor.RED + "MCPE Vampire Mod");
+
+
+  var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+              
+  activity.runOnUiThread(new java.lang.Runnable({ run: function() {
+    
+        try { 
+          buttonWindow = new android.widget.PopupWindow();
+          
+          var layout = new android.widget.RelativeLayout(activity);
+          
+          var button = new android.widget.Button(activity);
+          
+          button.setText("*feed*");
+          
+          button.setOnClickListener(new android.view.View.OnClickListener({
+                
+                onClick: function(viewarg) {
+                if(Vampire == 2 && Entity.getHealth(getPlayerEnt()) < 40)
+                {
+                feedtic = 2;
+                    clientMessage(ChatColor.RED + "FEED" + ChatColor.BLACK + "and Live...");
+                }
+                }
+          }));
+          layout.addView(button);
+          buttonWindow.setContentView(layout);
+          buttonWindow.setWidth(android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
+          buttonWindow.setHeight(android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
+          
+          buttonWindow.setBackgroundDrawable(new
+android.graphics.drawable.ColorDrawable(android.graphics.Color.BLACK));
+          
+          buttonWindow.showAtLocation(activity.getWindow().getDecorView(), android.view.Gravity.CENTER | android.view.Gravity.TOP, 0, 0);
+          
+        }catch(problem){
+          print("Button could not be displayed: " + problem); 
+        }
+  }}));
+}
+
+
+
+function attackHook(attacker,victim,x,y,z)
+{
+     if(Vampire == 2 && Entity.getEntityTypeId(victim)!=34 && Entity.getEntityTypeId(victim)!=64 && Entity.getEntityTypeId(victim)!=65 && Entity.getEntityTypeId(victim)!=66 && Entity.getEntityTypeId(victim)!=80 && Entity.getEntityTypeId(victim)!=81 && Entity.getEntityTypeId(victim)!=82 && Entity.getEntityTypeId(victim)!=83 && Entity.getEntityTypeId(victim)!=84 && feedtic == 2 && Entity.getHealth(victim) > 1)
+     {
+preventDefault();
+
+         var feedplay = Entity.getHealth(getPlayerEnt());
+         var feedmon = Entity.getHealth(victim);
+
+Entity.setHealth(getPlayerEnt(), feedplay + 2);
+Entity.setHealth(victim, feedmon - 2);
+
+clientMessage(ChatColor.RED + feedplay + "/" + feedmon);
+     }
+
+     if(Vampire == 2 && getCarriedItem()==260 && Entity.getEntityTypeId(victim)!=34 && Entity.getEntityTypeId(victim)!=64 && Entity.getEntityTypeId(victim)!=65 && Entity.getEntityTypeId(victim)!=66 && Entity.getEntityTypeId(victim)!=80 && Entity.getEntityTypeId(victim)!=81 && Entity.getEntityTypeId(victim)!=82 && Entity.getEntityTypeId(victim)!=83 && Entity.getEntityTypeId(victim)!=84 && Entity.getHealth(victim) < 100)
+     {
+         clientMessage(ChatColor.RED + "gave a little blood...");
+         var feed = Entity.getHealth(getPlayerEnt());
+         Player.setHealth(feed - 6);
+         Entity.setHealth(victim,100);
+     }
+
+
+
+ if(getCarriedItem() == 340 && Vampire == 2 && Entity.getEntityTypeId(victim)!=64 && Entity.getEntityTypeId(victim)!=65 && Entity.getEntityTypeId(victim)!=66 && Entity.getEntityTypeId(victim)!=80 && Entity.getEntityTypeId(victim)!=81 && Entity.getEntityTypeId(victim)!=82 && Entity.getEntityTypeId(victim)!=83 && Entity.getEntityTypeId(victim)!=84)
+{
+preventDefault();
+clientMessage(ChatColor.BLUE + "Age:" + Entity.getAnimalAge(victim));
+clientMessage(ChatColor.BLUE + "Type:" + Entity.getEntityTypeId(victim));
+clientMessage(ChatColor.BLUE + "Health:" + Entity.getHealth(victim));
+clientMessage(ChatColor.BLUE + "Coords: X" + Entity.getX(victim) + "Y" +  Entity.getY(victim) + "Z" + Entity.getZ(victim));
+}
+
+}
+
+function deathHook(murderer, victim, x, y, z)
+{ 
+     var mx = Entity.getX(victim);
+     var my = Entity.getY(victim);
+     var mz = Entity.getZ(victim);
+
+     if(Entity.getEntityTypeId(victim)!=64 && Entity.getEntityTypeId(victim)!=65 && Entity.getEntityTypeId(victim)!=66 && Entity.getEntityTypeId(victim)!=80 && Entity.getEntityTypeId(victim)!=81 && Entity.getEntityTypeId(victim)!=82 && Entity.getEntityTypeId(victim)!=83 && Entity.getEntityTypeId(victim)!=84)
+     {
+     var moneydeath = Math.floor((Math.random()*3)+1);
+if(moneydeath == 3) {
+         Level.dropItem(mx, my, mz, 1, 388, 1, 0);
+     }
+     }
+}
+
+function useItem(x, y, z, itemId, blockId) {
+
+if(itemId==472 && Player.getCarriedItemCount()<64)
+{
+var feedbot = Entity.getHealth(getPlayerEnt());
+
+     if(Vampire == 2 && feedbot < 40)
+     {
+         Player.setHealth(feedbot + 10);
+         addItemInventory(472, -1);
+     }
+}
+
+
+if (itemId == 260 && blockId == 246 && Player.getCarriedItemCount()<64) 
+{ 
+preventDefault();
+addItemInventory(260,-1);
+var apple = Math.floor((Math.random()*6)+1);
+if(apple == 3) {
+clientMessage(ChatColor.RED + "You Feel Bloody...");
+Vampire = 2;
+}
+}
+
+if (blockId == 246 && getTile(x,y+1,z) == 51 && Vampire == 2) 
+{ 
+preventDefault();
+clientMessage(ChatColor.BLUE + "the blood has been cleansed...");
+Vampire = 1;
+}
+
+if(Player.getCarriedItemCount()>63)
+{
+clientMessage("NO FULL STACKS");
+}
+
+if(focus == 1)
+{
+ModPE.setGameSpeed(20);
+focus = 0;
+}
+if(itemId == 347 && focus == 0)
+{
+ModPE.setGameSpeed(5);
+focus = 1;
+}
+}
+
+function destroyBlock(x, y, z, blockId) 
+{
+if(getTile(x, y, z)== 30 && getCarriedItem()==276)
+{
+Level.dropItem(x, y, z, 1, 30, 1, 0);
+Level.dropItem(x, y, z, 1, 30, 1, 0);
+Level.spawnMob(x, y, z, 35);
+}
+
+
+if(getCarriedItem()==276 && getTile(x, y, z) == 35 && Vampire == 2)
+{
+preventDefault();
+setTile(x, y, z,0);
+Level.dropItem(x, y, z, 1, 30, 1, 0);
+Level.dropItem(x, y, z, 1, 30, 1, 0);
+Level.dropItem(x, y, z, 1, 30, 1, 0);
+Level.dropItem(x, y, z, 1, 30, 1, 0);
+}
+}
+
+function modTick(x,y,z,blockId)
+{
+
+var chck = false;
+
+if(Vampire == 2 && sunclock == 3)
+{
+for(var sy=Math.floor(Player.getY())+1;sy<=
+128;sy++) {
+chck=false;
+if(sy==128) {
+chck=true;
+}
+if(Level.getTile(Math.floor(Player.getX()),sy,Math.floor(Player.getZ()))!=0||Level.getTile(Math.floor(Player.getX()),Math.floor
+(Player.getY())-1,Math.floor(Player.getZ()))==8 ||Level.getTile(Math.floor(Player.getX()),Math.floor(Player.getY())-1,Math.floor(Player.getZ() ))==9||Level.getTile(Math.floor(Player.getX()),Math.floor(Player.getY())-2,Math.floor (Player.getZ()))==8||Level.getTile(Math.floor (Player.getX()),Math.floor(Player.getY())-2,Math.floor(Player.getZ()))==9||Level.getTime() >= 10412 && Level.getTime() <= 18843
+||Level.getTime() >= 29388 && Level.getTime() <= 37615
+||Level.getTime() >= 48569 && Level.getTime() <= 56738
+||Level.getTime() >= 67832 && Level.getTime() <= 76109
+||Level.getTime() >= 86988 && Level.getTime() <= 95490
+||Level.getTime() >= 106057 && Level.getTime() <= 114657
+||Level.getTime() >= 125414 && Level.getTime() <= 133638
+||Level.getTime() >= 144549 && Level.getTime() <= 152629) 
+break;
+else if(chck==true) {
+      Entity.setFireTicks(getPlayerEnt(), 7);
+  }
+ }
+}
+
+if(Entity.getHealth(getPlayerEnt()) > 40)
+{
+Player.setHealth(40);
+feedtic = 1;
+}
+
+
+if(Vampire == 2)
+{
+
+var pain = Entity.getHealth(getPlayerEnt());
+	
+	if(pain == 40) {
+		hung = 0;
+	}
+   else if(pain < 40) {
+		hung = 1;
+	}
+	if(hung == 1) {
+		countdownh--;
+	} else if(hung == 0) {
+		countdownh = 600;
+	} else if(hung == 0) {
+		 Player.setHealth(pain - 1);
+	}
+	if(countdownh == 0) {
+		Player.setHealth(pain - 1);
+		countdownh = 600;
+	}
+}
+
+if(Vampire == 2)
+{
+sunclock--;
+}
+
+if(sunclock == 0)
+{
+sunclock = 120;
+}
+
+if(getCarriedItem() == 276 && Vampire == 2) {
+		if(sprintTick == 1) {
+			Xpos = Player.getX();
+			Zpos = Player.getZ();
+			sprintTick++;
+		} if(sprintTick == 3) {
+			sprintTick = 1;
+			Xdiff = Player.getX() - Xpos;
+			Zdiff = Player.getZ() - Zpos;
+			Entity.setVelX(Player.getEntity(),Xdiff);
+			Entity.setVelZ(Player.getEntity(),Zdiff);
+			Xdiff = 0;
+			Zdiff = 0;
+		} if(sprintTick != 1) {
+			sprintTick++;
+		}
+	}
+else if(getCarriedItem() != 276 && Vampire == 2) {
+sprintTick = 1;
+}
+}
+
+
+function leaveGame()
+{
+
+  var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+  activity.runOnUiThread(new java.lang.Runnable({ run: function() {
+        if(buttonWindow != null) { 
+          buttonWindow.dismiss(); 
+          buttonwindow = null;
+        }
+  }}));
+
+}
+
+//This is a compilation and i don't take credit for everything involved in this script.
+
+//2014 Kioni ®
