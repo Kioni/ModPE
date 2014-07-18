@@ -175,12 +175,12 @@ if(Player.getCarriedItemCount()>63)
 clientMessage("NO FULL STACKS");
 }
 
-if(itemId != 347 && focus == 1)
+if(itemId != 347 && focus == 1 && Vampire==2)
 {
 ModPE.setGameSpeed(20);
 focus = 0;
 }
-if(itemId == 347 && focus == 0)
+if(itemId == 347 && focus == 0 && Vampire==2)
 {
 ModPE.setGameSpeed(5);
 focus = 1;
