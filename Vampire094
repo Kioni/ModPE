@@ -74,7 +74,7 @@ var xx = Entity.getX(victim);
 var yy = Entity.getY(victim);
 var zz = Entity.getZ(victim);
 
-setTile(xx, yy, zz, 246);
+setTile(xx, yy, zz, 35, 14);
 {
 
 Level.destroyBlock(xx, yy, zz, false)
