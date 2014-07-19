@@ -229,7 +229,7 @@ if(Level.getTile(Math.floor(Player.getX()),sy,Math.floor(Player.getZ()))!=0||Lev
 ||Level.getTime() >= 86988 && Level.getTime() <= 95490
 ||Level.getTime() >= 106057 && Level.getTime() <= 114657
 ||Level.getTime() >= 125414 && Level.getTime() <= 133638
-||Level.getTime() >= 144549 && Level.getTime() <= 152629) 
+||Level.getTime() >= 144549 && Level.getTime() <= 152629||Entity.getHealth(getPlayerEnt()) == 40) 
 break;
 else if(chck==true) {
       Entity.setFireTicks(getPlayerEnt(), 7);
