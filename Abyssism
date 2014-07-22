@@ -11,6 +11,11 @@ addItemInventory(87, 1);
 var hth = Entity.getHealth(getPlayerEnt());
 Entity.setHealth(getPlayerEnt(), hth + 2);
 }
+if(itemId==352 && blockId==120)
+{
+addItemInventory(352, -1);
+addItemInventory(155, 1);
+}
 }
 
 function attackHook(attacker,victim)
@@ -210,3 +215,4 @@ var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
   }}));
 
 }
+
