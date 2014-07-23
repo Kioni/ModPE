@@ -2,6 +2,9 @@
 
 ModPE.setFoodItem(367, "rotten_flesh", 0, 1, "Rotten Flesh");
 
+var regen = 0;
+var countdown = 30;
+
 function useItem(x, y, z, itemId, blockId, side, itemDamage, blockDamage)
 {
 if(itemId==367 && blockId==120)
@@ -150,6 +153,25 @@ android.graphics.drawable.ColorDrawable(android.graphics.Color.BLACK));
 function modTick()
 
 {
+
+var health = Entity.getHealth(getPlayerEnt());
+	
+	if(health == 20) {
+		regen = 0;
+	}
+   if(health < 20) {
+		regen = 1;
+	}
+	if(regen == 1) {
+		countdown--;
+	} else if(regen == 0) {
+		countdown = 30;
+	}
+	if(countdown == 0) {
+		Player.setHealth(health + 1);
+		countdown = 30;
+	}
+
 
 if(spon == 2)
 
