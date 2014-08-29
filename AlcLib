@@ -1,0 +1,15 @@
+//Alchemical Library ~ Kioni 2014®
+
+Item.addCraftRecipe(296,1,0,[295,1,0,255,1,0]);
+Item.addCraftRecipe(86,1,0,[361,1,0,255,1,0]);
+Item.addCraftRecipe(103,1,0,[362,1,0,255,1,0]);
+Item.addCraftRecipe(457,1,0,[458,1,0,255,1,0]);
+Item.addCraftRecipe(14,1,0,[15,1,0,255,1,0]);
+Item.addCraftRecipe(173,1,0,[263,1,0,255,1,0]);
+Item.addCraftRecipe(22,1,0,[351,1,4,255,1,0]);
+Item.addCraftRecipe(56,1,0,[21,1,0,255,1,0]);
+Item.addFurnaceRecipe(264,255);
+Item.addFurnaceRecipe(265,255);
+Item.addFurnaceRecipe(266,255);
+Item.addFurnaceRecipe(263,264);
+ModPE.setItem(255,"ghast_tear", 0,"Hermetic Essence");
