@@ -4,6 +4,9 @@ Discovery BTW
 Supernatural and Better Than Wolves Styled Modding Templates,
 Creator of MCPE Vampire. 081 still availible at http://www.mediafire.com/?5797m86d1mkp6pf
 
+PC Mining Wand for Custom Stuff 2:
+http://www.mediafire.com/?86872lq28y5826w
+
 Abyssism
 =====
 
