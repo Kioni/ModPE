@@ -2,7 +2,7 @@ Discovery BTW
 =====
 
 Supernatural and Better Than Wolves Styled Modding Templates,
-Creator of MCPE Vampire.
+Creator of MCPE Vampire. 081 still availible at http://www.mediafire.com/?5797m86d1mkp6pf
 
 Abyssism
 =====
