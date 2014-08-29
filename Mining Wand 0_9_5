@@ -4,11 +4,7 @@
 
 var mine = 0;
 
-function newLevel(x,y,z,ent)
-{
 
-clientMessage(ChatColor.BLUE + "Kioni's Mining Wand");
-}
 function useItem(x, y, z, itemId, blockId)
 
 {
@@ -560,27 +556,6 @@ if(itemId==406&&blockId==20&&getTile(x,y-1,z)==51)//If your item is a Nether Qua
 
 
                 clientMessage("Glass Melt- created Diamond**");
-
-
-        }
-
-
-if(itemId==264&&blockId==42)//If your item is a Diamond, and the block your using it on is iron block
-
-
-        {
-
-
-                setTile(x,y,z,0);
-
-
-                addItemInventory(264,-1);
-
-
-                addItemInventory(266,8);
-
-
-                clientMessage("Transmutation Success!!");
 
 
         }
