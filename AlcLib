@@ -1,7 +1,9 @@
 //Alchemical Library ~ Kioni 2014®
 
 Item.addCraftRecipe(296,1,0,[295,1,0,255,1,0]);
+Item.addCraftRecipe(297,1,0,[296,1,0,255,1,0]);
 Item.addCraftRecipe(86,1,0,[361,1,0,255,1,0]);
+Item.addCraftRecipe(400,1,0,[86,1,0,255,1,0]);
 Item.addCraftRecipe(103,1,0,[362,1,0,255,1,0]);
 Item.addCraftRecipe(457,1,0,[458,1,0,255,1,0]);
 Item.addCraftRecipe(173,1,0,[263,1,0,255,1,0]);
@@ -9,6 +11,7 @@ Item.addCraftRecipe(288,1,0,[35,1,0,255,1,0]);
 Item.addCraftRecipe(334,1,0,[288,1,0,255,1,0]);
 Item.addCraftRecipe(35,1,0,[334,1,0,255,1,0]);
 Item.addCraftRecipe(266,1,0,[265,1,0,255,1,0]);
+Item.addCraftRecipe(354,1,0,[325,1,1,255,1,0]);
 
 Item.addFurnaceRecipe(264,255);
 Item.addFurnaceRecipe(265,255);
@@ -18,6 +21,7 @@ Item.addFurnaceRecipe(1,16);
 Item.addFurnaceRecipe(16,21);
 Item.addFurnaceRecipe(21,73);
 Item.addFurnaceRecipe(73,388);
+
 ModPE.setItem(255,"ghast_tear", 0,"Hermetic Essence");
 
 function useItem(x, y, z, itemId, blockId, blockDamage)
