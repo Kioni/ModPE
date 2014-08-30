@@ -23,7 +23,7 @@ var MELON = 103;
 
 function newLevel() {
 	ModPE.setItem(PS, "ruby", 0, "Philosophers Stone");
-   Item.addCraftRecipe(PS,1,0,[331,4,0,264,4,0,49,1,0]);
+   Item.addCraftRecipe(PS,1,0,[264,1,0,331,1,0,264,1,0,331,1,0,49,1,0,331,1,0,264,1,0,331,1,0,264,1,0]);
 }
 
 function swapUse(oldBlockId, damageValue) {
