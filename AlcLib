@@ -1,9 +1,9 @@
 //Alchemical Library ~ Kioni 2014®
 
 Item.addCraftRecipe(296,1,0,[295,1,0,255,1,0]);
-Item.addCraftRecipe(297,1,0,[296,1,0,255,1,0]);
+Item.addCraftRecipe(297,1,0,[296,1,0,331,1,0]);
 Item.addCraftRecipe(86,1,0,[361,1,0,255,1,0]);
-Item.addCraftRecipe(400,1,0,[86,1,0,255,1,0]);
+Item.addCraftRecipe(400,1,0,[86,1,0,331,1,0]);
 Item.addCraftRecipe(103,1,0,[362,1,0,255,1,0]);
 Item.addCraftRecipe(457,1,0,[458,1,0,255,1,0]);
 Item.addCraftRecipe(173,1,0,[263,1,0,255,1,0]);
@@ -12,6 +12,16 @@ Item.addCraftRecipe(334,1,0,[288,1,0,255,1,0]);
 Item.addCraftRecipe(35,1,0,[334,1,0,255,1,0]);
 Item.addCraftRecipe(266,1,0,[265,1,0,255,1,0]);
 Item.addCraftRecipe(354,1,0,[325,1,1,255,1,0]);
+Item.addCraftRecipe(364,1,0,[363,1,0,331,1,0]);
+Item.addCraftRecipe(320,1,0,[319,1,0,331,1,0]);
+Item.addCraftRecipe(366,1,0,[365,1,0,331,1,0]);
+Item.addCraftRecipe(365,1,0,[319,1,0,255,1,0]);
+Item.addCraftRecipe(363,1,0,[365,1,0,255,1,0]);
+Item.addCraftRecipe(319,1,0,[363,1,0,255,1,0]);
+Item.addCraftRecipe(40,1,0,[39,1,0,255,1,0]);
+Item.addCraftRecipe(39,1,0,[40,1,0,255,1,0]);
+Item.addCraftRecipe(99,1,0,[39,1,0,331,1,0]);
+Item.addCraftRecipe(100,1,0,[40,1,0,331,1,0]);
 
 Item.addFurnaceRecipe(264,255);
 Item.addFurnaceRecipe(265,255);
