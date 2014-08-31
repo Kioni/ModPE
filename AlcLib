@@ -22,6 +22,7 @@ Item.addCraftRecipe(40,1,0,[39,1,0,255,1,0]);
 Item.addCraftRecipe(39,1,0,[40,1,0,255,1,0]);
 Item.addCraftRecipe(99,1,0,[39,1,0,331,1,0]);
 Item.addCraftRecipe(100,1,0,[40,1,0,331,1,0]);
+Item.addCraftRecipe(365,1,0,[352,1,0,255,1,0]);
 
 Item.addFurnaceRecipe(264,255);
 Item.addFurnaceRecipe(265,255);
@@ -32,7 +33,7 @@ Item.addFurnaceRecipe(16,21);
 Item.addFurnaceRecipe(21,73);
 Item.addFurnaceRecipe(73,388);
 
-ModPE.setItem(255,"ghast_tear", 0,"Hermetic Essence");
+ModPE.setItem(255,"sugar", 0,"Hermetic Essence");
 
 function useItem(x, y, z, itemId, blockId, blockDamage)
 {
