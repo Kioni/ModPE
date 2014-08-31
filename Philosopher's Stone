@@ -1,5 +1,5 @@
 // Philosopher'sStone by tombailey94 with reference to http://tekkitclassic.wikia.com/wiki/Philosopher's_Stone
-// version 0.0.2; not complete
+// version 0.0.2.1k
 
 //Edited by Kioni
 
@@ -48,12 +48,16 @@ function swapUse(oldBlockId, damageValue) {
 		case TALLGRASS:
 			newBlock.tileId = DEADBUSH;
 			break;
-		case NETHERRACK:
-			newBlock.tileId = COBBLESTONE;
-			break;
+
 		case GRAVEL:
 			newBlock.tileId = SANDSTONE;
 			break;
+      case SANDSTONE:
+			newBlock.tileId = SAND;
+			break;
+      case DEADBUSH:
+			newBlock.tileId = NETHERRACK;
+			break; 
 		case MELON:
 			newBlock.tileId = PUMPKIN;
 			break;
@@ -111,6 +115,9 @@ function swapDestroy(oldBlockId) {
 		case GLASS:
 			newBlockId = SAND;
 			break;
+      case NETHERRACK:
+			newBlockId = COBBLESTONE;
+			break;
 	}
 	
 	return newBlockId;
@@ -123,21 +130,15 @@ function useItem(x, y, z, itemId, blockId, side) { //acts as right click
       Player.setHealth(Entity.getHealth(getPlayerEnt())+1);
 	}
 if(itemId==PS&&blockId==42)//If your item is a PS, and the block your using it on is iron block
-
-
         {
-
-
                 setTile(x,y,z,0);
-
-
                 addItemInventory(266,8);
-
-
                 clientMessage("Transmutation Success!!");
-
-
         }
+if(itemId==PS&&blockId==NETHERRACK)
+{
+setTile(x, y+1, z, 51);
+}
 }
 
 function startDestroyBlock(x, y, z, side) { //acts as shift right click
