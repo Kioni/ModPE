@@ -983,7 +983,7 @@ Block.defineBlock(209, "FireWorks",[["tnt", 2]])
 Block.setDestroyTime(209,0.3)
 
 
-Item.addCraftRecipe(123, 1, 0, [331, 4, 0, 89, 1, 0])
+Item.addCraftRecipe(123, 1, 0, [0, 1, 0, 331, 1, 0, 0, 1, 0, 331, 1, 0, 89, 1, 0, 331, 1, 0, 0, 1, 0, 331, 1, 0, 0, 1, 0])
 
 
 Item.addCraftRecipe(209, 1, 0, [331, 4, 0, 57, 1, 0, 331, 1, 0, 289, 3, 0])
