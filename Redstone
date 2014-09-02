@@ -960,20 +960,14 @@ function modTick()
 }
 
 
-Block.defineBlock (123, "redstone lamp",[["redstone_lamp_off",0], ["redstone_lamp_off",0], ["redstone_lamp_off",0], ["redstone_lamp_off",0], ["redstone_lamp_off",0], ["redstone_lamp_off",0]],1,false,0) 
+Block.defineBlock (123, "redstone lamp",[["redstone_lamp_off",0]]) 
 
   Block.setDestroyTime(123,0.3)
-
-  //Block.setShape(69,7/16,0,7/16,9/16,10/16,9/16)
-
   Block.setLightLevel (123, 0)
 
-  Block.defineBlock (124, "redstone lamp",[["redstone_lamp_on",0], ["redstone_lamp_on",0], ["redstone_lamp_on",0], ["redstone_lamp_on",0], ["redstone_lamp_on",0], ["redstone_lamp_on",0]],1,false,0) 
+  Block.defineBlock (124, "redstone lamp",[["redstone_lamp_on",0]]) 
 
   Block.setDestroyTime(124,0.3)
-
-  //Block.setShape(69,7/16,0,7/16,9/16,10/16,9/16)
-
   Block.setLightLevel (124, 15)
 
 
