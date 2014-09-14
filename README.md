@@ -80,12 +80,12 @@ Vince Teague:
 AlchMine Runes:
 4258-4265
 
+All traded for cash.
+
 Uses HarkenScythe
 
 Duke Crocker:
-24878 blood
-24877 soul
-373:8257  life
+24878 blood<>24877 soul, 373:8257  life
 
 Hermetic Farmer(AlchMine):
 296 wheat <> 4257 ash
