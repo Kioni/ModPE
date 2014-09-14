@@ -58,7 +58,7 @@ Abyssal Rises My Alines!!
 
 
 
-~~~Haven-Troubles~~~
+Haven-Troubles:
 Can be combined with any other number of mods you may find useful or done with just the basics, the only mod required is InGame NBTEdit.
 To Trouble a villager the following must be set:
 CustomNameVisible:1
@@ -67,14 +67,14 @@ CustomName:@, or #, or *, whatever you feel looks like a good tattoo for the tro
 
 The trouble itself is crafted in the trades, so make sure you open their trade before going into nbtedit and make sure to boost the trades maxUses to 999 so the trouble lasts a while before you have to reactivate it, the following are the troubles i've created:
 
-~~Not a Trouble, The Guard Leader~~
+Not a Trouble, The Guard Leader,
 Uses HarkenScythe and AlchMine Alchemy
 Vince Teague:
 24884 necronomicon
 24885 page
 AlchMine Runes:
 4258-4265
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Uses HarkenScythe
 Duke Crocker:
 24878 blood
