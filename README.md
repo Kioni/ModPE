@@ -94,7 +94,7 @@ Moonlight(HarkenScythe,IMAN-link coming):
 6036counteragent <> 24962moonclock
 
 Crash(AbyssalCraft):
-4071bomb  <> 381endereye  399netherstar
+381endereye  399netherstar <> 4071bomb
 
 Soul Wither:
 Wither Lake Effect 20 30 3
