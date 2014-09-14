@@ -82,21 +82,20 @@ AlchMine Runes:
 
 All traded for cash.
 
-Uses HarkenScythe
 
-Duke Crocker:
+Duke Crocker(HarkenScythe):
 24878 blood<>24877 soul, 373:8257  life
 
 Hermetic Farmer(AlchMine):
 296 wheat <> 4257 ash
 
-Moonlight(HarkenScythe,IMAN-link coming):
+Moonlight(HarkenScythe,IMAN-link coming,Roki Trouble):
 6036counteragent <> 24962moonclock
 
-Crash(AbyssalCraft):
+Crash(AbyssalCraft,Boss-Related Trouble):
 381endereye  399netherstar <> 4071bomb
 
-Soul Wither:
+Soul Wither(Works best with AlchMine, Tomb of Enhancement):
 Wither Lake Effect 20 30 3
 88soulsand <> 397:1witherhead
 
