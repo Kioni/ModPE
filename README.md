@@ -89,9 +89,6 @@ Duke Crocker(HarkenScythe):
 Hermetic Farmer(AlchMine):
 296 wheat <> 4257 ash
 
-Moonlight(HarkenScythe,IMAN-link coming,Roki Trouble):
-6036counteragent <> 24962moonclock
-
 Crash(AbyssalCraft,Boss-Related Trouble):
 381endereye  399netherstar <> 4071bomb
 
