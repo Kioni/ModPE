@@ -58,9 +58,8 @@ Abyssal Rises My Alines!!
 
 
 
-Haven-Troubles:
-Can be combined with any other number of mods you may find useful or done with just the basics, the only mod required is InGame NBTEdit.
-To Trouble a villager the following must be set:
+Haven-Troubles: Can be combined with any other number of mods you may find useful or done with just the basics, the only 2 mods required is AetherII and InGame NBTEdit. 
+First we must get our aether, go to the void and obtain Ambrosia Shards, come back and take a flint and steel, light the ground, sacrifice one shard to the fire and put it out with your bare hand, now with aether on your palm, nbtedit a villager, this should only be used once per ambrosia burned! To Trouble a villager the following must be set:
 
 CustomNameVisible:1
 
@@ -70,31 +69,22 @@ CustomName:@, or #, or *, whatever you feel looks like a good tattoo for the tro
 
 The trouble itself is crafted in the trades, so make sure you open their trade before going into nbtedit and make sure to boost the trades maxUses to 999 so the trouble lasts a while before you have to reactivate it, now a trouble should be based roughly on what they traded before or attached to a nearby enviromental status effect, the following are the troubles i've created:
 
-Not a Trouble, The Guard Leader,
-Uses HarkenScythe and AlchMine Alchemy
+Not a Trouble, The Guard Leader, Uses HarkenScythe and AlchMine Alchemy
 
-Vince Teague:
-24884 necronomicon
-24885 page
+Vince Teague: 24884 necronomicon 24885 page
 
-AlchMine Runes:
-4258-4265
+AlchMine Runes: 4258-4265
 
 All traded for cash.
 
+Duke Crocker(HarkenScythe): 24878 blood<>24877 soul, 373:8257 life
 
-Duke Crocker(HarkenScythe):
-24878 blood<>24877 soul, 373:8257  life
+Hermetic Farmer(AlchMine): 296 wheat <> 4257 ash
 
-Hermetic Farmer(AlchMine):
-296 wheat <> 4257 ash
+Crash(AbyssalCraft,Boss-Related Trouble): 381endereye 399netherstar <> 4071bomb
 
-Crash(AbyssalCraft,Boss-Related Trouble):
-381endereye  399netherstar <> 4071bomb
+Soul Wither(Works best with AlchMine, Tomb of Enhancement): Wither Lake Effect 20 30 3 88soulsand <> 397:1witherhead
 
-Soul Wither(Works best with AlchMine, Tomb of Enhancement):
-Wither Lake Effect 20 30 3
-88soulsand <> 397:1witherhead
+Fish Oil: 349rawfish <> 373:8264weakness
 
-Fish Oil:
-349rawfish <> 373:8264weakness
+Further more any effects should be powered by back and forth hoppers method, using an ambrosia shard to power it.
