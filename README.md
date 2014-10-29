@@ -1,3 +1,9 @@
+What's New?
+
+Thaumaturge Update!!
+
+https://github.com/Kioni/ModPE/blob/master/Thaumaturge
+
 Discovery BTW
 =====
 
