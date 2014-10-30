@@ -11,6 +11,8 @@ var regen = 0;
 
 var countdown = 30;
 
+var level = null;
+var xp = null;
 var mine = 0;
 var iron = 0;
 var gold = 0;
@@ -33,7 +35,41 @@ if(ether == null)
         {
 
           ether = ModPE.readData("ether");
+          if(ether == null)
 
+        {
+
+          ether = 0;
+
+        }
+        }
+
+if(level == null)
+
+        {
+
+          level = ModPE.readData("level");
+          if(level == null)
+
+        {
+
+          level = 0;
+
+        }
+        }
+
+if(xp == null)
+
+        {
+
+          xp = ModPE.readData("xp");
+          if(xp == null)
+
+        {
+
+          xp = 0;
+
+        }
         }
 
   activity.runOnUiThread(new java.lang.Runnable({ run: function() {
@@ -117,7 +153,7 @@ function deathHook(attacker,victim)
 
 {
 
-if(ether < 10000)
+if(ether < 100)
 
 {
 
@@ -146,6 +182,8 @@ function leaveGame() {
 
 
 ModPE.saveData("ether", ether);
+ModPE.saveData("level", level);
+ModPE.saveData("xp", xp);
 
 
   activity.runOnUiThread(new java.lang.Runnable({ run: function() {
@@ -166,6 +204,85 @@ ModPE.saveData("ether", ether);
 function useItem(x,y,z,itemId,blockId,side)
 
 {
+if(blockId==47 && itemId==340 && xp < 4200 && Player.getCarriedItemCount() < 64)
+{
+clientMessage("x°•°•°  +");
+xp++;
+addItemInventory(340,-1);
+if(xp==99)
+{
+level++;
+}
+if(xp==499)
+{
+level++;
+}
+if(xp==1499)
+{
+level++;
+}
+if(xp==2099)
+{
+level++;
+}
+if(xp==2799)
+{
+level++;
+}
+if(xp==3299)
+{
+level++;
+}
+if(xp==3899)
+{
+level++;
+}
+if(xp==4199)
+{
+level++;
+}
+}
+if(blockId==47 && itemId!=340)
+{
+clientMessage("Level" + level);
+clientMessage("Current: " + xp);
+if(level==0)
+{
+clientMessage("Next: 100");
+}
+if(level==1)
+{
+clientMessage("Next: 500");
+}
+if(level==2)
+{
+clientMessage("Next: 1500");
+}
+if(level==3)
+{
+clientMessage("Next: 2100");
+}
+if(level==4)
+{
+clientMessage("Next: 2800");
+}
+if(level==5)
+{
+clientMessage("Next: 3300");
+}
+if(level==6)
+{
+clientMessage("Next: 3900");
+}
+if(level==7)
+{
+clientMessage("Next: 4200");
+}
+if(level==8)
+{
+clientMessage("LEVEL MAX");
+}
+}
 if(blockId==44 && itemId==266)
 {
 addItemInventory(266,-1);
@@ -227,9 +344,12 @@ addItemInventory(202, 50);
 iron = 0;
 gold = 0;
 diamond = 0;
+spawnPigZombie(x, y, z);
+spawnPigZombie(x, y, z);
+spawnPigZombie(x, y, z);
 }
 
-if(itemId==340)
+if(itemId==340 && blockId!= 47)
 {
 clientMessage("SpellBook:knockback:5,fire:5,glowstone:10,boom:10,sprint:15,nuke:20,regen:20");
 }
@@ -401,7 +521,37 @@ function procCmd(cmd){
  		regen = 1;
 
  		print("Regen Started");
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               activity.runOnUiThread(new java.lang.Runnable({ run: function() {
 
+                  try {
+
+        button.setText("*" + ether + "*"); 
+
+  }catch(problem){
+
+          print("Error: " + problem);
+
+        }}}));
  		}
 
       else if(cmd[0]=="sprint"&&ether > 14){
@@ -409,7 +559,22 @@ function procCmd(cmd){
  		 spon = 2;
 
  		print("Sprint Enabled");
-      ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               
 
 
   activity.runOnUiThread(new java.lang.Runnable({ run: function() {
@@ -451,6 +616,26 @@ function procCmd(cmd){
 
 					explode(getPlayerX()+nukeX,getPlayerY()+5,getPlayerZ()+nukeZ,1);
                ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               ether--;
+               
 
 
   activity.runOnUiThread(new java.lang.Runnable({ run: function() {
@@ -495,8 +680,45 @@ if(regen == 1)
 
 var health = Entity.getHealth(getPlayerEnt());
 	
-	if(health == 20) {
+	if(health == 20 && level == 0) {
 		regen = 0;
+      clientMessage("HEALED for 20");
+	}
+   if(health == 200 && level == 1) {
+		regen = 0;
+      clientMessage("HEALED for 200");
+	}
+   if(health == 400 && level == 2) {
+		regen = 0;
+      clientMessage("HEALED for 400");
+	}
+   if(health == 800 && level == 3) {
+		regen = 0;
+      clientMessage("HEALED for 800");
+	}
+   if(health == 1000 && level == 4) {
+		regen = 0;
+      clientMessage("HEALED for 1000");
+	}
+   if(health == 2000 && level == 5) {
+		regen = 0;
+      clientMessage("HEALED for 2000");
+	}
+   if(health == 4000 && level == 6) {
+		regen = 0;
+      clientMessage("HEALED for 4000");
+	}
+   if(health == 8000 && level == 7) {
+		regen = 0;
+      clientMessage("HEALED for 8000");
+	}
+   if(health == 10000 && level == 8) {
+		regen = 0;
+      clientMessage("HEALED@10000");
+	}
+   if(health > 10000) {
+		regen = 0;
+      clientMessage("Strangely Overpowered");
 	}
 	if(regen == 1) {
 		countdown--;
@@ -512,13 +734,25 @@ var health = Entity.getHealth(getPlayerEnt());
 if(Entity.getHealth(getPlayerEnt())< 2)
 {
 ether = 0;
+
+activity.runOnUiThread(new java.lang.Runnable({ run: function() {
+
+                  try {
+
+        button.setText("*" + ether + "*"); 
+
+  }catch(problem){
+
+          print("Error: " + problem);
+
+        }}}));
 }
 
-if(ether > 9999)
+if(ether > 99)
 
 {
 
-ether = 9999;
+ether = 99;
 
 }
 
@@ -618,3 +852,4 @@ function destroyBlock (x, y, z, side)
 
 
 }
+
