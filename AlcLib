@@ -1,38 +1,38 @@
  //Alchemical Library ~ Kioni 2014®
 
 
-ModPE.setItem(254, "sugar", 0, "Hermetic Essence");
+ModPE.setItem(377, "blaze_powder", 0, "Hermetic Essence");
 
 
-ModPE.setItem(250, "nether_star", 0, "Extractor");
+ModPE.setItem(404, "comparator", 0, "Extractor");
 
 
-Item.addCraftRecipe(250,1,0,[265,1,0,331,1,0,265,1,0,331,1,0,254,1,0,331,1,0,265,1,0,331,1,0,265,1,0]);
+Item.addCraftRecipe(404,1,0,[265,1,0,331,1,0,265,1,0,331,1,0,377,1,0,331,1,0,265,1,0,331,1,0,265,1,0]);
 
 
-Item.addCraftRecipe(296,1,0,[295,1,0,254,1,0]);
+Item.addCraftRecipe(296,1,0,[295,1,0,377,1,0]);
 
 Item.addCraftRecipe(297,1,0,[296,1,0,331,1,0]);
 
-Item.addCraftRecipe(86,1,0,[361,1,0,254,1,0]);
+Item.addCraftRecipe(86,1,0,[361,1,0,377,1,0]);
 
 Item.addCraftRecipe(400,1,0,[86,1,0,331,1,0]);
 
-Item.addCraftRecipe(103,1,0,[362,1,0,254,1,0]);
+Item.addCraftRecipe(103,1,0,[362,1,0,377,1,0]);
 
-Item.addCraftRecipe(457,1,0,[458,1,0,254,1,0]);
+Item.addCraftRecipe(457,1,0,[458,1,0,377,1,0]);
 
-Item.addCraftRecipe(173,1,0,[263,1,0,254,1,0]);
+Item.addCraftRecipe(173,1,0,[263,1,0,377,1,0]);
 
-Item.addCraftRecipe(288,1,0,[35,1,0,254,1,0]);
+Item.addCraftRecipe(288,1,0,[35,1,0,377,1,0]);
 
-Item.addCraftRecipe(334,1,0,[288,1,0,254,1,0]);
+Item.addCraftRecipe(334,1,0,[288,1,0,377,1,0]);
 
-Item.addCraftRecipe(35,1,0,[334,1,0,254,1,0]);
+Item.addCraftRecipe(35,1,0,[334,1,0,377,1,0]);
 
-Item.addCraftRecipe(266,1,0,[265,1,0,254,1,0]);
+Item.addCraftRecipe(266,1,0,[265,1,0,377,1,0]);
 
-Item.addCraftRecipe(354,1,0,[325,1,1,254,1,0]);
+Item.addCraftRecipe(354,1,0,[325,1,1,377,1,0]);
 
 Item.addCraftRecipe(364,1,0,[363,1,0,331,1,0]);
 
@@ -40,30 +40,30 @@ Item.addCraftRecipe(320,1,0,[319,1,0,331,1,0]);
 
 Item.addCraftRecipe(366,1,0,[365,1,0,331,1,0]);
 
-Item.addCraftRecipe(365,1,0,[319,1,0,254,1,0]);
+Item.addCraftRecipe(365,1,0,[319,1,0,377,1,0]);
 
-Item.addCraftRecipe(363,1,0,[365,1,0,254,1,0]);
+Item.addCraftRecipe(363,1,0,[365,1,0,377,1,0]);
 
-Item.addCraftRecipe(319,1,0,[363,1,0,254,1,0]);
+Item.addCraftRecipe(319,1,0,[363,1,0,377,1,0]);
 
-Item.addCraftRecipe(40,1,0,[39,1,0,254,1,0]);
+Item.addCraftRecipe(40,1,0,[39,1,0,377,1,0]);
 
-Item.addCraftRecipe(39,1,0,[40,1,0,254,1,0]);
+Item.addCraftRecipe(39,1,0,[40,1,0,377,1,0]);
 
 Item.addCraftRecipe(99,1,0,[39,1,0,331,1,0]);
 
 Item.addCraftRecipe(100,1,0,[40,1,0,331,1,0]);
 
-Item.addCraftRecipe(365,1,0,[352,1,0,254,1,0]);
+Item.addCraftRecipe(365,1,0,[352,1,0,377,1,0]);
 
 
-Item.addFurnaceRecipe(264,254);
+Item.addFurnaceRecipe(264,377);
 
-Item.addFurnaceRecipe(265,254);
+Item.addFurnaceRecipe(265,377);
 
-Item.addFurnaceRecipe(266,254);
+Item.addFurnaceRecipe(266,377);
 
-Item.addFurnaceRecipe(263,264);
+Item.addFurnaceRecipe(263,377);
 
 Item.addFurnaceRecipe(1,16);
 
@@ -79,57 +79,57 @@ function useItem(x, y, z, itemId, blockId, blockDamage)
 
 {
 
-if(itemId==254 && blockId==15)
+if(itemId==377 && blockId==15)
 
 {
 
 setTile(x, y, z, 14);
 
-addItemInventory(254, -1);
+addItemInventory(377, -1);
 
 }
 
-if(itemId==254 && blockId==1)
+if(itemId==377 && blockId==1)
 
 {
 
 setTile(x, y, z, 15);
 
-addItemInventory(254, -1);
+addItemInventory(377, -1);
 
 }
 
-if(itemId==254 && blockId==4)
+if(itemId==377 && blockId==4)
 
 {
 
 setTile(x, y, z, 48);
 
-addItemInventory(254, -1);
+addItemInventory(377, -1);
 
 }
 
-if(itemId==254 && blockId==5)
+if(itemId==377 && blockId==5)
 
 {
 
 setTile(x, y, z, 47);
 
-addItemInventory(254, -1);
+addItemInventory(377, -1);
 
 }
 
-if(itemId==254 && blockId==49)
+if(itemId==377 && blockId==49)
 
 {
 
 setTile(x, y, z, 42);
 
-addItemInventory(254, -1);
+addItemInventory(377, -1);
 
 }
 
-if(itemId==254 && blockId==89)
+if(itemId==377 && blockId==89)
 
 {
 
@@ -137,11 +137,11 @@ Level.setTime(0);
 
 setTile(x, y, z, 0);
 
-addItemInventory(254, -1);
+addItemInventory(377, -1);
 
 }
 
-if(itemId==250)
+if(itemId==404)
 
 {
 
