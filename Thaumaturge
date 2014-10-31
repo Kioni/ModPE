@@ -17,6 +17,7 @@ var mine = 0;
 var iron = 0;
 var gold = 0;
 var diamond = 0;
+var cc = 1;
 
 var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 
@@ -388,6 +389,7 @@ iron = 0;
 gold = 0;
 diamond = 0;
 spawnCow(x, y, z, "mob/creeper.png");
+cc = 2;
 ether++;
 ether++;
 ether++;
@@ -946,3 +948,10 @@ function destroyBlock (x, y, z, side)
 
 }
 
+function entityAddedHook(ent)
+{
+if(Entity.getEntityTypeId(ent)==33 && cc==2)
+{
+Entity.setHealth(ent, 0);
+}
+}
