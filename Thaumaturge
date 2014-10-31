@@ -286,7 +286,6 @@ clientMessage("LEVEL MAX");
 if(blockId==44 && itemId==266)
 {
 addItemInventory(266,-1);
-addItemInventory(202,3);
 gold++;
 if(gold == 5)
 {
@@ -296,12 +295,10 @@ clientMessage("Gold ready for summon!");
 if(blockId==44 && itemId==406)
 {
 addItemInventory(406,-1);
-addItemInventory(202,2);
 }
 if(blockId==44 && itemId==265)
 {
 addItemInventory(265,-1);
-addItemInventory(202,1);
 iron++;
 if(iron == 10)
 {
@@ -323,30 +320,126 @@ Player.setHealth(2);
 if(iron == 3)
 {
 clientMessage("a lowly sacrifice..");
-addItemInventory(202,3);
 iron = 0;
 gold = 0;
 diamond = 0;
+addItemInventory(388, 5);
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+
+activity.runOnUiThread(new java.lang.Runnable({ run: function() {
+
+                  try {
+
+        button.setText("*" + ether + "*"); 
+
+  }catch(problem){
+
+          print("Error: " + problem);
+
+        }}}));
 }
 if(gold == 3)
 {
 clientMessage("a Kingly Sacrifice..");
-addItemInventory(202,8);
 iron = 0;
 gold = 0;
 diamond = 0;
+addItemInventory(388, 20);
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+
+activity.runOnUiThread(new java.lang.Runnable({ run: function() {
+
+                  try {
+
+        button.setText("*" + ether + "*"); 
+
+  }catch(problem){
+
+          print("Error: " + problem);
+
+        }}}));
 }
 }
 if(blockId==26 && iron > 9 && gold > 4 && diamond > 2)
 {
 clientMessage("Summon Completed, The Abyss Awaits...");
-addItemInventory(202, 50);
+addItemInventory(388, 60);
+level = 0;
+xp = 0;
 iron = 0;
 gold = 0;
 diamond = 0;
-spawnPigZombie(x, y, z);
-spawnPigZombie(x, y, z);
-spawnPigZombie(x, y, z);
+spawnCow(x, y, z, "mob/creeper.png");
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+ether++;
+
+activity.runOnUiThread(new java.lang.Runnable({ run: function() {
+
+                  try {
+
+        button.setText("*" + ether + "*"); 
+
+  }catch(problem){
+
+          print("Error: " + problem);
+
+        }}}));
 }
 
 if(itemId==340 && blockId!= 47)
