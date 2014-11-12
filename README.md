@@ -1,8 +1,8 @@
 What's New?
 
-ECTOCRAFT 1.1 Update!!
+ECTOCRAFT 1.2 Update!!
 
-http://www.mediafire.com/view/r14i0dzrf5bbmbf
+http://www.mediafire.com/view/f838887vuify2q7
 
 Discovery BTW
 =====
