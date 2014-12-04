@@ -41,7 +41,7 @@ if(blockId==252 && so == 1 && Player.getCarriedItem()!=388 && Player.getCarriedI
 if(blockId==252 && Player.getCarriedItem()==388 && Player.getCarriedItemCount() < 64 && cash < 999)
 {
 addItemInventory(388,-1);
-cash = cash +1;
+cash++;
 }
 if(blockId==99 && itemId!=0)
 {
