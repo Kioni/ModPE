@@ -1,5 +1,8 @@
 What's New?
 
+Ecto Containment Craft Guide
+http://www.mediafire.com/view/mxrzgc4z6dy40s9/Ecto.pdf
+
 ECTOCRAFT 1.2 Update!!
 
 http://www.mediafire.com/view/f838887vuify2q7
