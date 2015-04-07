@@ -1,7 +1,7 @@
 What's New?
 
 PotterCraft
-http://www.mediafire.com/view/rd7d96lj0yrpccc/PotterCraftv2.js
+https://github.com/Kioni/ModPE/blob/master/PotterCraft
 
 Ecto Containment Craft Guide
 http://www.mediafire.com/view/mxrzgc4z6dy40s9/Ecto.pdf
