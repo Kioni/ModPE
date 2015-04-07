@@ -1,0 +1,1116 @@
+var reparo = 0;
+var levi = 0;
+var mine = 0;
+var bomb = 0;
+var GUI;
+    var menu;
+    var exitUI;
+var gunon = 1;
+var cts;
+var ctx;
+var simpleGui;
+var simpleGuiButton;
+var blockArray=new Array();//saves ent of blocks
+var timer=-30;//what makes it work
+var pickedBlock=46;//Id of TNT by default
+var pickedDam=0;
+var pickedBool,pickedEnt,playerEnt;
+var readyFor=false;
+var portalGun=280;//can be changed easily
+var GUI2=null;
+//events
+function dip2px(dips){
+    var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+    return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);
+    }
+function newLevel()
+{
+cts = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+var toAddAct=com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+toAddAct.runOnUiThread(new java.lang.Runnable({run:function()
+{try{GUI2=new android.widget.PopupWindow();
+var layout=new android.widget.RelativeLayout(toAddAct);
+var button=new android.widget.Button(toAddAct);
+button.setText("°");
+button.setOnClickListener(new android.view.View.OnClickListener({onClick:
+function(viewarg){putBlockOperator();}}));
+layout.addView(button);
+GUI2.setContentView(layout);
+GUI2.setWidth(100);
+GUI2.setHeight(100);
+GUI2.showAtLocation(toAddAct.getWindow().getDecorView(),android.view.Gravity.LEFT | android.view.Gravity.BOTTOM,0,0);
+GUI2.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));}
+catch(err){print("Error: "+err);}}})); //just making button
+timer=-30; //reseting
+var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+    ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
+    try{
+             var layout = new android.widget.LinearLayout(ctx);
+             layout.setOrientation(1);
+             var menuBtn = new android.widget.Button(ctx);
+             menuBtn.setText('Charms');
+    menuBtn.setOnClickListener(new android.view.View.OnClickListener({
+    onClick: function(viewarg){
+    mainMenu();
+    exit();
+    }
+    }));
+    layout.addView(menuBtn);
+    GUI = new android.widget.PopupWindow(layout, android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT, android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
+    GUI.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+    GUI.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.RIGHT | android.view.Gravity.BOTTOM, 10, 20);
+    }catch(err){
+    print('An error occured: ' + err);
+    }
+    }}));
+}
+function mainMenu(){
+    var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+    ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
+    try{
+    var menuLayout = new android.widget.LinearLayout(ctx);
+    var menuScroll = new android.widget.ScrollView(ctx);
+    var menuLayout1 = new android.widget.LinearLayout(ctx);
+    menuLayout.setOrientation(1);
+    menuLayout1.setOrientation(1);
+    menuScroll.addView(menuLayout);
+    menuLayout1.addView(menuScroll);
+    var button = new android.widget.Button(ctx);
+    button.setText('Mining');
+    button.setOnClickListener(new android.view.View.OnClickListener({
+    onClick: function(viewarg){
+    bomb = 0;
+    mine = 1;
+    levi = 0;
+    reparo = 0;
+    clientMessage("Mining Wand Active");
+    }
+    }));
+    menuLayout.addView(button);
+    var button2 = new android.widget.Button(ctx);
+    button2.setText('Bombardah');
+    button2.setOnClickListener(new android.view.View.OnClickListener({
+    onClick: function(viewarg){
+    bomb = 1;
+    mine = 0;
+    levi = 0;
+    reparo = 0;
+    clientMessage("BomBarDah");
+    }
+    }));
+    menuLayout.addView(button2);
+    var button3 = new android.widget.Button(ctx);
+    button3.setText('Leviosa');
+    button3.setOnClickListener(new android.view.View.OnClickListener({
+    onClick: function(viewarg){
+    bomb = 0;
+    mine = 0;
+    levi = 1;
+    reparo = 0;
+    clientMessage("LeviOsa");
+    }
+    }));
+    menuLayout.addView(button3);
+    var button6 = new android.widget.Button(ctx);
+    button6.setText('Salvo');
+    button6.setOnClickListener(new android.view.View.OnClickListener({
+    onClick: function(viewarg){
+    Player.setHealth(30);
+    clientMessage("HEALED");
+    }
+    }));
+    menuLayout.addView(button6);
+    var button7 = new android.widget.Button(ctx);
+    button7.setText('Reparo');
+    button7.setOnClickListener(new android.view.View.OnClickListener({
+    onClick: function(viewarg){
+    bomb = 0;
+    mine = 0;
+    levi = 0;
+    reparo = 1;
+    clientMessage("Reparo");
+    }
+    }));
+    menuLayout.addView(button7);
+    var button4 = new android.widget.Button(ctx);
+    button4.setText('CLEAR');
+    button4.setOnClickListener(new android.view.View.OnClickListener({
+    onClick: function(viewarg){
+    bomb = 0;
+    mine = 0;
+    levi = 0;
+    reparo = 0;
+    clientMessage("Spells Cleared");
+    }
+    }));
+    menuLayout.addView(button4);
+    var button5 = new android.widget.Button(ctx);
+    button5.setText('Wand');
+    button5.setOnClickListener(new android.view.View.OnClickListener({
+    onClick: function(viewarg){
+    addItemInventory(280,1)
+    clientMessage("Wand Given");
+    }
+    }));
+    menuLayout.addView(button5);
+    //More buttons...
+    menu = new android.widget.PopupWindow(menuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/2, ctx.getWindowManager().getDefaultDisplay().getHeight());
+    menu.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.BLACK));
+    menu.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.RIGHT | android.view.Gravity.TOP, 0, 0);
+    }catch(error){
+    print('An error occured: ' + error);
+    }
+    }}));
+    }
+    function exit(){
+    var ctxe = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+    ctxe.runOnUiThread(new java.lang.Runnable({ run: function(){
+    try{
+    var xLayout = new android.widget.LinearLayout(ctxe);
+    var xButton = new android.widget.Button(ctxe);
+    xButton.setText('X');
+    xButton.setTextColor(android.graphics.Color.WHITE);
+    xButton.setOnClickListener(new android.view.View.OnClickListener({
+    onClick: function(viewarg){
+    exitUI.dismiss();
+    menu.dismiss();
+    }
+    }));
+    xLayout.addView(xButton);
+    exitUI = new android.widget.PopupWindow(xLayout, dip2px(40), dip2px(40));
+    exitUI.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+    exitUI.showAtLocation(ctxe.getWindow().getDecorView(), android.view.Gravity.RIGHT | android.view.Gravity.TOP, 0, 0);
+    }catch(exception){
+    print(exception);
+    }
+    }}));
+    }
+function modTick()
+{
+entityMover();startup();}
+function useItem(x,y,z,itemId,blockId)
+{
+if(itemId==280&&reparo==1)
+{
+	var repar = getTile(x, y, z);
+	addItemInventory(repar,1);
+}
+
+if(itemId==280&&blockId==87)
+{
+	setTile(x, y+1, z, 51);
+}
+
+if(bomb==1 && itemId==280)
+{
+     explode(x,y,z, 3.5);
+}
+
+if(itemId==280 && levi==1)
+{
+Entity.setVelY(getPlayerEnt(), 2.5);
+}
+
+if(itemId==280&&blockId==173)//If your item is a Magic Wand, and the block your using it on is Coal Block
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(173,1);
+
+
+
+        }
+
+
+
+if(itemId==280&&blockId==170)//If your item is a Magic Wand, and the block your using it on is Hay Bail
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(170,1);
+
+
+
+        }
+
+
+
+if(itemId==280&&blockId==58)//If your item is a Magic Wand, and the block your using it on is Crafting Table
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(58,1);
+
+
+
+        }
+
+
+
+if(itemId==280&&blockId==245)//If your item is a Magic Wand, and the block your using it on is Stonecutter
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(245,1);
+
+
+
+        }
+
+
+
+if(itemId==280&&blockId==61)//If your item is a Magic Wand, and the block your using it on is a Furnace
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(61,1);
+
+
+
+        }
+
+if(itemId==280&&blockId==47)//If your item is a Magic Wand, and the block your using it on is a Bookshelf
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                clientMessage("**Blessings**");
+
+
+
+                addItemInventory(347,1);
+
+
+
+                addItemInventory(339,5);
+
+
+
+                addItemInventory(340,2);
+
+
+
+                addItemInventory(40,5);
+
+
+
+                addItemInventory(39,5);
+
+
+
+        }
+
+
+
+if(itemId==280&&blockId==89)
+
+
+
+{ 
+
+
+
+     if(mine==0)
+
+
+
+     { 
+
+
+
+         mine = 1;
+
+
+
+         clientMessage("Mining Wand Active");
+
+
+
+     }
+
+
+
+     else if(mine==1)
+
+
+
+     {
+
+
+
+          mine = 0;
+
+
+
+          clientMessage("Mining Wand Off");
+
+
+
+     }
+
+
+
+}
+
+
+
+    if(mine==1)
+
+
+
+    {
+
+
+
+        if(itemId==280&&blockId==59)
+
+
+
+             {
+
+
+
+                  setTile(x,y,z,0);
+
+
+
+                  setTile(x,y-1,z,60);
+
+
+
+                  addItemInventory(296,3);
+
+
+
+                  addItemInventory(295,2);
+
+
+
+                  addItemInventory(458,2);
+
+
+
+             }
+
+
+
+        if(itemId==280&&blockId==2)//If your item is a Magic Wand, and the block your using it on is grass
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+        }
+
+
+
+        else if(itemId==280&&blockId==3)//If the block we are using is dirt
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+        }
+
+
+
+        else if(itemId==280&&blockId==1)//If the block we are using is stone
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+                addItemInventory(4,1);
+
+
+
+        }
+
+
+       else if(itemId==280&&blockId==4)//If the block we are using is stone
+
+
+
+        {
+
+
+
+                setTile(x,y,z,48);
+
+
+
+        }
+
+
+        
+
+        else if(itemId==280&&blockId==13)//If the block we are using is gravel
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(318,1);
+
+
+
+        }
+
+
+
+        else if(itemId==280&&blockId==16)//If the block we are using is coal ore
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(263,3);
+
+
+
+        }
+
+
+
+        else if(itemId==280&&blockId==15)//If the block we are using is iron ore
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(15,1);
+
+
+
+        }
+
+
+
+        else if(itemId==280&&blockId==21)//If the block we are using is lapis ore
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(21,1);
+
+
+
+        }
+
+
+
+        else if(itemId==280&&blockId==14)//If the block we are using is gold ore
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(14,1);
+
+
+
+        }
+
+
+
+        else if(itemId==280&&blockId==56)//If the block we are using is diamond ore
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(56,1);
+
+
+
+        }
+
+
+
+        else if(itemId==280&&blockId==73)//If the block we are using is redstone ore
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(331,3);
+
+
+
+                addItemInventory(246,1);
+
+
+
+        }
+
+
+
+        else if(itemId==280&&blockId==74)//If the block we are using is redstone ore
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(331,3);
+
+
+
+                addItemInventory(246,3);
+
+
+
+        }
+
+
+
+        if(itemId==280&&blockId==78)//If your item is a Magic Wand, and the block your using it on is snow
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(332,1);
+
+
+
+        }
+
+
+
+        if(itemId==280&&blockId==80)//If your item is a Magic Wand, and the block your using it on is Snow Block
+
+
+
+        {
+
+
+
+                setTile(x,y,z,79);
+
+
+
+        }
+
+
+
+        if(itemId==280&&blockId==12)//If your item is a Magic Wand, and the block your using it on is sand
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(20,1);
+
+
+
+        }
+
+
+
+        if(itemId==280&&blockId==20)//If your item is a Magic Wand, and the block your using it on is glass
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(406,2);
+
+
+
+        }
+
+
+
+        if(itemId==280&&blockId==7)//If your item is a Magic Wand, and the block your using it on is bedrock
+
+
+
+        {
+
+
+                setTile(x,y,z,0);
+                addItemInventory(87,1);
+
+
+
+        }
+
+
+
+        if(itemId==280&&blockId==17)//If your item is a wand
+
+
+
+   {
+
+
+
+      setTile(x,y,z,0);
+
+
+
+      addItemInventory(17,1);
+
+
+
+      for(var a = 1; a < 10; a++)
+
+
+
+      {
+
+
+
+        if(getTile(x,y+a,z) == 17)
+
+
+
+        {
+
+
+
+          setTile(x,y+a,z,0);
+
+
+
+          addItemInventory(17,1);
+
+
+
+        }
+
+
+
+        else {break;}
+
+
+
+      }
+
+
+
+      preventDefault();
+
+
+
+    }
+
+
+}
+
+
+ //Kioni's Mixture Craft®
+
+
+
+
+
+if(itemId==289&&blockId==12&&getTile(x,y+1,z)==9)//If your item is gunpowder, and the block your using it on is sand in water
+
+
+
+        {
+
+
+
+                preventDefault();
+
+
+
+                setTile(x,y,z,82);
+
+
+
+                addItemInventory(289,-1);
+
+
+
+        }
+
+
+
+if(itemId==318&&blockId==13)//If your item is a flint, and the block your using it on is gravel
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(318,-1);
+
+
+
+                addItemInventory(289,1);
+
+
+
+                clientMessage("GP+");
+
+
+
+        }
+
+
+
+        if(itemId==289&&blockId==245)//If your item is a pile of gunpowder, and the block your using it on is a StoneCutter
+
+
+
+        {
+
+
+
+                preventDefault();
+
+
+
+                addItemInventory(348,1);
+
+
+
+                addItemInventory(289,-1);
+
+
+
+                clientMessage("GS+");
+
+
+
+        }
+
+
+
+if(itemId==406&&blockId==20&&getTile(x,y-1,z)==51)//If your item is a Nether Quartz, and the block your using it on is glass over a fire
+
+
+
+        {
+
+
+
+                setTile(x,y,z,0);
+
+
+
+                addItemInventory(264,1);
+
+
+
+                addItemInventory(406,-1);
+
+
+
+                clientMessage("Glass Melt- created Diamond**");
+
+
+
+        }
+
+
+
+if(itemId==264&&blockId==42&&getTile(x,y-1,z)==51)//If your item is a Diamond, and the block your using it on is iron over a fire
+
+
+
+        {
+
+
+
+                setTile(x,y,z,41);
+
+                addItemInventory(264,-1);
+
+
+
+                clientMessage("Alchemy- created Gold**");
+
+
+
+        }
+
+
+
+//End Mixture Craft.
+
+}
+
+function attackHook(attacker,victim)
+{
+	if(levi==1)
+	{
+preventDefault();
+playerEnt=attacker;
+var intype=Entity.getEntityTypeId(victim);
+if(intype==83)
+return;
+if(!pickedBool&&readyFor&&Player.getCarriedItem()== portalGun)
+{pickedEnt=victim;
+pickedBool=true;
+if(Entity.getEntityTypeId(victim)==65)
+{pickedBlock=46;
+pickedDam=0;}}
+else if(Entity.getX(pickedEnt)==Entity.getX(victim)&&Entity.getY(pickedEnt)==Entity.getY(victim)&&Entity.getZ(pickedEnt)==Entity.getZ(victim))
+{preventDefault();
+if(!getTile(Math.round(Entity.getX(victim)-0.5),Math.round(Entity.getY(victim)-0.5),Math.round(Entity.getZ(victim)-0.5)))
+{pickedBool=false;
+if(Entity.getEntityTypeId(victim)==65)
+putBlock(victim);}
+}}}
+function deathHook(a,v,victim)
+{
+if(Entity.getEntityTypeId(victim)!=64 && Entity.getEntityTypeId(victim)!=65 && Entity.getEntityTypeId(victim)!=66 && Entity.getEntityTypeId(victim)!=80 && Entity.getEntityTypeId(victim)!=81 && Entity.getEntityTypeId(victim)!=82 && Entity.getEntityTypeId(victim)!=83 && Entity.getEntityTypeId(victim)!=84)
+     {
+     var moneydeath = Math.floor((Math.random()*2)+1);
+if(moneydeath == 2) {
+         Level.dropItem(Entity.getX(victim), Entity.getY(victim), Entity.getZ(victim), 1, 368, 1, 0);
+     }
+     }
+if(!pickedBool)
+return;
+var intype=Entity.getEntityTypeId(v);
+if(intype==64||intype==80||intype==81||intype==82||intype==83)
+return;
+if(Entity.getX(pickedEnt)==Entity.getX(v)&&Entity.getY(pickedEnt)==Entity.getY(v)&&Entity.getZ(pickedEnt)==Entity.getZ(v)){
+pickedBool=false;}}
+function entityRemovedHook(ent)
+{if(!pickedBool)
+return;
+var intype=Entity.getEntityTypeId(ent);
+if(intype==64||intype==80||intype==81||intype==82||intype==83)
+return;
+if(Entity.getX(pickedEnt)==Entity.getX(ent)&&Entity.getY(pickedEnt)==Entity.getY(ent)&&Entity.getZ(pickedEnt)==Entity.getZ(ent)){
+pickedBool=false;}}
+function leaveGame()
+{var toAddAct = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+toAddAct.runOnUiThread(new java.lang.Runnable({ run: function() {
+if(GUI != null){GUI.dismiss();}}})); //delete button
+blockArray=new Array();
+timer=-30;
+pickedBlock=46;
+pickedDam=0;
+readyFor=false;
+GUI=null;
+pickedBool=false; //reset
+if(cts!=null) {
+		cts.runOnUiThread(new java.lang.Runnable({ run: function() {
+			try {
+				if(simpleGui != null) {
+					simpleGui.dismiss();
+					simpleGui = null;
+				}
+				if(simpleGuiButton != null) {
+					simpleGuiButton.dismiss();
+					simpleGuiButton = null;
+				}
+			} catch (err){
+				print("Error: " + err);
+			}
+		}}));
+	}
+	 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+    ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
+    if(GUI != null){
+    GUI.dismiss();
+    GUI = null;
+    }
+    if(menu != null){
+    menu.dismiss();
+    menu = null;
+    }
+    if(exitUI != null){
+    exitUI.dismiss();
+    exitUI = null;
+    }
+    }}));
+}
+
+function startup() //make blocks when entering game
+{if(timer>100)
+return;
+timer++;
+if(!timer)
+{for(var i=0;i<80;i++)
+{blockArray[i]=Level.spawnMob(128,256,128,65);
+Entity.setRenderType(blockArray[i],20);}}
+if(timer<80&&timer>=0)
+{for(var i=0;i<80;i++)
+{stopper(blockArray[i]);
+Entity.setPosition(blockArray[i],128,256,128);}
+Entity.rideAnimal(blockArray[timer],blockArray[timer]);}
+if(timer==90)
+{readyFor=true;}}
+
+function stopper(ent) //stop entity falling
+{setVelY(ent,0);
+setVelX(ent,0);
+setVelZ(ent,0);}
+function entityMover() //move entity
+{if(pickedBool)
+{var px,py,pz,dx,dy,dz,yaw,pit;
+px=Player.getX();
+py=Player.getY()-0.5;
+pz=Player.getZ();
+yaw=Math.PI*Entity.getYaw(playerEnt)/180;
+pit=Math.PI*Entity.getPitch(playerEnt)/180;
+dx=-1*Math.cos(pit)*Math.sin(yaw);
+dy=-1*Math.sin(pit);
+dz=Math.cos(pit)*Math.cos(yaw);
+if(Entity.getEntityTypeId(pickedEnt)==65)
+moveBlock(pickedEnt,px+2*dx,py+2*dy-0.5,pz+2*dz);
+else
+Entity.setPosition(pickedEnt,px+2*dx,py+2*dy,pz+2*dz);
+stopper(pickedEnt);
+}}
+function moveBlock(ent,x,y,z) //special moving method for rATNT
+{var newMob=Level.spawnMob(x,y,z,80);
+Entity.setRenderType(newMob,21);
+stopper(newMob);
+Entity.rideAnimal(ent,newMob);
+Entity.remove(newMob);
+Entity.rideAnimal(ent,ent);}
+function putBlock(ent) //put block and reset ent
+{setTile(Math.round(Entity.getX(ent)-0.5),Math.round(Entity.getY(ent)-0.5),Math.round(Entity.getZ(ent)-0.5),pickedBlock,pickedDam);
+moveBlock(ent,128,256,128);
+pickedBool=false;}
+function putBlockOperator() //put block if possible
+{if(!pickedBool)
+return;
+var inblock=getTile(Math.round(Entity.getX(pickedEnt)-0.5),Math.round(Entity.getY(pickedEnt)-0.5),Math.round(Entity.getZ(pickedEnt)-0.5));
+if(inblock==0||(inblock>7&&inblock<12)||inblock==51||inblock==78)
+{pickedBool=false;
+if(Entity.getEntityTypeId(pickedEnt)==65)
+putBlock(pickedEnt);}}
